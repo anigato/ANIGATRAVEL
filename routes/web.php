@@ -298,7 +298,7 @@ Route::prefix('/export')->group(function(){
 			->format('png')
 			->generate(public_path('images/qrcode.png'));
 	})->name('export_pemesanan');
-	Route::get('/admin','ExportController@admin')->name('export_admin');
+	Route::get('/admin','ExportController@excel')->name('export_admin');
 });
 
 

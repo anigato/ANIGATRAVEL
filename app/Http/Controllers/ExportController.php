@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AdminExport;
 use Illuminate\Http\Request;
 use App\Pemesanan;
 use App\Penumpang;
 use App\Mail\ReportEmail;
 use Illuminate\Support\Facades\Mail;
-use PDF;
 use Carbon\Carbon;
 use App\Tiket;
 use App\User;
@@ -247,5 +247,8 @@ class ExportController extends Controller
     public function email(){
         Mail::to('khoerulanam0855@gmail.com')->send(new ReportEmail());
         return "Email Terkirim";
+    }
+    public function excel(){
+        return (new AdminExport)->download('users.xlsx');
     }
 }

@@ -11,9 +11,9 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
-            <li class="nav-item active"><a href="{{route('pemesanan')}}" class="nav-link">Keranjang</a></li>
+            <li class="nav-item"><a href="{{route('pemesanan')}}" class="nav-link">Keranjang</a></li>
             <li class="nav-item"><a href="{{route('dashboard_user')}}" class="nav-link">Pemesanan Saya</a></li>
-            <li class="nav-item"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
+            <li class="nav-item active"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
             <li class="nav-item dropdown no-arrow" id="app12">
                 <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{session('username')}}
@@ -41,8 +41,8 @@
       <div class="container">
         <div class="row slider-text align-items-center">
           <div class="col-md-7 col-sm-12 ftco-animate">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Layar Awal</a></span> <span>Keranjang</span></p>
-            <h1 class="mb-3">Keranjang</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Layar Awal</a></span> <span>User Manual</span></p>
+            <h1 class="mb-3">User Manual</h1>
           </div>
         </div>
       </div>
@@ -54,7 +54,28 @@
   <section style="background-color:#007bff;color:white" class="ftco-section-2" id="app3" v-if="ada">
     <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#fff">Keranjang</h3></div>
     <div class="container-fluid d-flex">
-      balalala
+        <div v-if="cara_login">
+            <table>
+                <tr>
+                    <td>Cara melakukan registrasi dan login</td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
     </div>
   </section>
 @endsection
+@push('js')
+    
+@endpush

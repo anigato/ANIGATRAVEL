@@ -99,6 +99,9 @@
           <a class="collapse-item" href="{{route('jadwal_flight')}}"><i class="fas fa-fw fa-plane"></i> Pesawat</a>
           <a class="collapse-item" href="{{route('jadwal_train')}}"><i class="fas fa-fw fa-subway"></i> Kereta</a>
         </div>
+        <div>
+          balalala
+        </div>
       </div>
     </li>
 
