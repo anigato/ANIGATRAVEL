@@ -2,13 +2,16 @@
 @section('header')
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
+            @if(session('level')=='user')
             <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
+              <span class="oi oi-menu"></span> Menu
             </button>
+            @endif
 
             <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
+              @if(session('level')=='user')
                 <li class="nav-item active"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
                 <li class="nav-item"><a href="{{route('pemesanan')}}" class="nav-link">Keranjang</a></li>
                 <li class="nav-item"><a href="{{route('dashboard_user')}}" class="nav-link">Pemesanan Saya</a></li>
@@ -28,6 +31,11 @@
                         </a>
                     </div>
                 </li>
+              @endif
+              @if(session('level')==null)
+              <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
+              <li class="nav-item"><a href="{{route('user_register')}}" class="nav-link">Daftar</a></li>
+              @endif
             </ul>
             </div>
         </div>

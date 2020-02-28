@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,35 +33,28 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row-lg">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                  </div>
-                  <form class="user" method="post" id="app1" v-on:submit.prevent="login">
-                   
-                    <div v-if="(status === 401)">Username & Password Salah</div>
-                    <div v-if="(status === 421)">Password Salah</div>
-                    <div class="form-group">
-                      <input type="text" class="form-control form-control-user" v-model="username" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control form-control-user" v-model="password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                      </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
-                    <hr>
-                  </form>
-                  <hr>
-                  <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                  </div>
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                 </div>
+                <form class="user" method="post" id="app1" v-on:submit.prevent="login">
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-user" v-model="username" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-user" v-model="password" placeholder="Password">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                </form>
+                <hr>
+                <div class="text-center">
+                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                </div>
+                <div class="text-center">
+                  <a class="small" href="{{route('user_daftar')}}">Create an Account!</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -78,6 +71,7 @@
 
   <!-- Core plugin JavaScript-->
   <script src="{{asset('tema/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <script src="{{ asset('sweetalert/docs/assets/sweetalert/sweetalert.min.js') }}"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('tema/js/sb-admin-2.min.js')}}"></script>
@@ -106,15 +100,28 @@
 				        	app.status = this.status;
 
 				        	if (this.status == 401) {
-				        		app.errors = JSON.parse(this.responseText);
-				        		console.log(1);
+                    swal({
+                      title: "Gagal!",
+                      text: "Username dan Password salah! Silahkan cek lagi",
+                      icon: "error",
+                      button: "OK",
+                    });
                   }
                   if (this.status == 421) {
-				        		app.errors = JSON.parse(this.responseText);
-				        		console.log(1);
-				        	}
+                    swal({
+                      title: "Gagal!",
+                      text: "Password salah! Silahkan cek lagi",
+                      icon: "error",
+                      button: "OK",
+                    });
+                  }
 
-				        	if (this.status == 200) {
+                  if (this.status == 200) {
+                    // window.location.replace("{{ route('dashboard_user') }}");
+                    window.location.replace("{{ route('cc') }}");
+                  }
+
+				        	if (this.status == 201) {
 				        		window.location.replace("{{ route('dashboard_admin') }}");
 				        	}
 				        }

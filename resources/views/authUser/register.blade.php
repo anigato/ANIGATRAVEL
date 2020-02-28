@@ -65,16 +65,10 @@
                 Register Account
               </button>
               <hr>
-              <a href="index.html" class="btn btn-google btn-user btn-block">
-                <i class="fab fa-google fa-fw"></i> Register with Google
-              </a>
             </form>
             <hr>
             <div class="text-center">
-              <a class="small" href="forgot-password.html">Forgot Password?</a>
-            </div>
-            <div class="text-center">
-              <a class="small" href="{{route('user_login')}}">Already have an account? Login!</a>
+              <p>Udah Punya Akun? Silahkan <a class="small" href="{{route('user_login')}}">Login!</a></p>
             </div>
           </div>
         </div>
@@ -136,7 +130,8 @@
                   }
 
                   if (this.status == 200) {
-                    window.location.replace("{{ route('flight') }}");
+                    // window.location.replace("{{ route('flight') }}");
+                    window.location.replace("{{ route('cc') }}");
                   }
                 }
             }

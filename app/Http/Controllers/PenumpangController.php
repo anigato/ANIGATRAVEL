@@ -55,7 +55,7 @@ class PenumpangController extends Controller
     {
         $validator = Validator::make($req->all(),
             [
-                'username' => 'required|unique:users,username|regex:/^[A-Za-z0-9_.]{5,12}$/',
+                'username' => 'required|unique:users,username|unique:penumpangs,username|regex:/^[A-Za-z0-9_.]{5,12}$/',
                 'nama_penumpang' => 'required|between:2,20',
                 'password' => 'required|between:5,12|same:confirm_password'
             ]);

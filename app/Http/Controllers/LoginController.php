@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use Hash;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Str;
+use App\Penumpang;
+
 class LoginController extends Controller
 {
     /**
@@ -20,35 +23,45 @@ class LoginController extends Controller
     }
     public function login(Request $req)
     {
-       $check = User::where('username',$req->username)->count();
+        $pt = User::where('username',$req->username)->count();
+        $us = Penumpang::where('username',$req->username)->count();
 
-       if ($check<=0) {
-          $data = ['body'=>'Nothing User'];
+        if ($us>0 || $pt>0) {
+            if ($us>0) {
+                $use = Penumpang::where('username',$req->username)->first();
+                if (FacadesHash::check($req->password,$use->password)) {
+                    $token = Str::random(60);
+                    Penumpang::where('username',$req->username)->update(['token'=>$token]);
+                    $level  = Penumpang::where('username',$req->username)->first();
+                    session(['username'=>$req->username]);
+                    session(['token'=>$token]);
+                    session(['level'=>"user"]);
+                    $data = ['body'=>'Success'];
+                    return response(json_encode($data),200)->header('Content-Type','text/plain');
+                } else {
+                    $data = ['body'=>'Password Wrong'];
+                    return response(json_encode($data),421)->header('Content-Type','text/plain');
+                }
+            } else if ($pt>0){
+                $pet = User::where('username',$req->username)->first();
+                if (FacadesHash::check($req->password,$pet->password)) {
+                    $token = Str::random(60);
+                    User::where('username',$req->username)->update(['remember_token'=>$token]);
+                    $level  = User::where('username',$req->username)->first();
+                    session(['username'=>$req->username]);
+                    session(['token'=>$token]);
+                    session(['level'=>$level->level]);
+                    $data = ['body'=>'Success'];
+                    return response(json_encode($data),201)->header('Content-Type','text/plain');
+                } else {
+                    $data = ['body'=>'Password Wrong'];
+                    return response(json_encode($data),421)->header('Content-Type','text/plain');
+                }
+            }
+        }
+        if ($pt<=0 || $us<=0) {
+            $data = ['body'=>'Tidak ada'];
             return response(json_encode($data),401)->header('Content-Type','text/plain');
-       }
-
-       $data = User::where('username',$req->username)->first();
-
-
-        if (Hash::check($req->password,$data->password)) {
-
-            $token = Str::random(60);
-
-            User::where('username',$req->username)->update([
-                'remember_token'=>$token
-            ]);
-
-            $level  = User::where('username',$req->username)->first();
-
-            session(['username'=>$req->username]);
-            session(['token'=>$token]);
-            session(['level'=>$level->level]);
-
-            $data = ['body'=>'Success'];
-            return response(json_encode($data),200)->header('Content-Type','text/plain');
-        } else {
-            $data = ['body'=>'Password Wrong'];
-            return response(json_encode($data),421)->header('Content-Type','text/plain');
         }
     }
     public function logout(Request $req){
