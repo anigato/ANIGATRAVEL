@@ -53,7 +53,7 @@
     <div class="container">
       <div class="row slider-text align-items-center">
         <div class="col-md-7 col-sm-12 ftco-animate">
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Layar Awal</a></span> <span>Keranjang</span> <span>Pengecekan</span></p>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('cc') }}">Layar Awal</a></span> <span>Keranjang</span> <span>Pengecekan</span></p>
           <h1 class="mb-3">Pengecekan</h1>
         </div>
       </div>

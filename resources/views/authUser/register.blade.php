@@ -25,7 +25,7 @@
   <!-- END nav -->
 
   <section class="home-slider owl-carousel" id="app2">
-    <div class="slider-item" style="background-image: url('../voyage/images/borobudur2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="slider-item" style="background-image: url('../voyage/images/pulau.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text align-items-center">

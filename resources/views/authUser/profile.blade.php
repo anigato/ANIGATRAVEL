@@ -41,7 +41,8 @@
       <div class="container">
         <div class="row slider-text align-items-center">
           <div class="col-md-12 col-sm-12 ftco-animate">
-            <h1>Profile</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('cc') }}">Layar Awal</a></span> <span>User</span> <span>Profile</span></p>
+          <h1 class="mb-3">User Profil</h1>
           </div>
         </div>
       </div>
@@ -165,7 +166,6 @@
   <script type="text/javascript">
     var xhttp = new XMLHttpRequest();
     var token = "<?= session('token') ?>";
-
 
     var app = new Vue({
         el: '#app3',
