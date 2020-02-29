@@ -2,40 +2,44 @@
 @section('header')
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            @if(session('level')=='user')
             <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="oi oi-menu"></span> Menu
             </button>
-            @endif
 
             <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item active"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
+              <li class="nav-item"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
+
               @if(session('level')=='user')
-                <li class="nav-item active"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
-                <li class="nav-item"><a href="{{route('pemesanan')}}" class="nav-link">Keranjang</a></li>
-                <li class="nav-item"><a href="{{route('dashboard_user')}}" class="nav-link">Pemesanan Saya</a></li>
-                <li class="nav-item"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
-                <li class="nav-item dropdown no-arrow" id="app12">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{session('username')}}
-                    </a>
-                    <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="{{route('profile')}}">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" v-on:click="logout_user">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-                        </a>
-                    </div>
-                </li>
+              <li class="nav-item"><a href="{{route('pemesanan')}}" class="nav-link">Keranjang</a></li>
+              <li class="nav-item"><a href="{{route('dashboard_user')}}" class="nav-link">Pemesanan Saya</a></li>
               @endif
+
               @if(session('level')==null)
-              <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
+              <li class="nav-item"><a href="{{route('user_login')}}" class="nav-link">Login</a></li>
               <li class="nav-item"><a href="{{route('user_register')}}" class="nav-link">Daftar</a></li>
               @endif
+
+              @if(session('level')=='user')
+              <li class="nav-item dropdown no-arrow" id="app12">
+                <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{session('username')}}
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="{{route('profile')}}">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" v-on:click="logout_user">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                    </a>
+                </div>
+              </li>
+              @endif
+              
             </ul>
             </div>
         </div>
@@ -49,7 +53,7 @@
               <div class="row slider-text align-items-center">
                   <div class="col-md-7 col-sm-12 ftco-animate">
                     <div style="background-color:rgba(0,0,0,0.5);border-radius:10px;padding:20px">
-                      <h1 class="mb-3">Selamat datang di ANIGATRAVEL</h1>
+                      <h1 class="mb-3">Selamat Datang di ANIGATRAVEL</h1>
                     </div>
                   </div>
               </div>
@@ -62,7 +66,7 @@
           <div class="row slider-text align-items-center">
               <div class="col-md-7 col-sm-12 ftco-animate">
                 <div style="background-color:rgba(0,0,0,0.5);border-radius:10px;padding:20px">
-                  <h1 class="mb-3">Buat perjalananmu menyenangkan</h1>
+                  <h1 class="mb-3">Buat Perjalananmu Menyenangkan</h1>
                 </div>
               </div>
           </div>
@@ -75,7 +79,7 @@
           <div class="row slider-text align-items-center">
               <div class="col-md-7 col-sm-12 ftco-animate">
                 <div style="background-color:rgba(0,0,0,0.5);border-radius:10px;padding:20px">
-                  <h1 class="mb-3">Gabung bersama kami</h1>
+                  <h1 class="mb-3">Gabung Bersama Kami</h1>
                 </div>
               </div>
           </div>
@@ -206,7 +210,7 @@
         </div>
     </section>
 
-    <section style="background-color:#007bff;color:white" class="ftco-section-2" v-if="Detail">
+    <section style="background-color:#007bff;color:white;padding:2%" class="ftco-section-2" v-if="Detail">
         <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#fff">Pilih No Kursi</h3></div>
         <div class="container-fluid d-flex">
             <table class="text-center" style="width:100%" v-model="id_tiket" v-for="i in detail_p">
@@ -249,7 +253,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <button style="border-radius:20px;border-color:white" class="btn btn-primary" type="submit" v-on:click="form_detail_p(i.id_jadwal,no_kursi)" >
+                      <button style="border-radius:20px;border-color:white" class="btn btn-primary btn-block" type="submit" v-on:click="form_detail_p(i.id_jadwal,no_kursi)" >
                         Pesan <i class="fas fa-check"></i>
                       </button>
                     </td>
@@ -307,6 +311,14 @@
                       swal({
                         title: "Opps!",
                         text: "Tiket sudah dipesan!",
+                        icon: "warning",
+                        button: "OK",
+                      });
+                    }
+                    if (this.status == 404) {
+                      swal({
+                        title: "Opps!",
+                        text: "Mohon Login Dulu!",
                         icon: "warning",
                         button: "OK",
                       });

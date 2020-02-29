@@ -11,8 +11,8 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/','PenumpangController@login')->name('user_login');
 
@@ -22,9 +22,22 @@ Auth::routes();
 Route::get('/layar/awal',function(){
 	return view('user.order');
 })->name('cc');
-Route::get('/tentang',function(){
-	return view('user.content3');
-})->name('tentang');
+Route::prefix('/anigatravel/order')->group(function(){
+	Route::get('/flight','OrderController@index_flight')->name('flight');
+	Route::get('/train','OrderController@index_train')->name('train');
+
+	Route::post('/flight','OrderController@rute_flight')->name('rute_flight');
+	Route::post('/train','OrderController@rute_train')->name('rute_train');
+
+	Route::post('/detail_flight','OrderController@detail_flight')->name('detail_flight');
+	Route::post('/detail_train','OrderController@detail_train')->name('detail_train');
+
+	Route::get('/flight/rute','OrderController@flight')->name('data_flight');
+	Route::get('/train/rute','OrderController@train')->name('data_train');
+
+	Route::delete('/{id_order}','OrderController@order_destroy')->name('jadwal_delete');
+});
+
 Route::get('/manual',function(){
 	return view('user.manual');
 })->name('manual');
@@ -40,7 +53,7 @@ Route::prefix('/admin')->group(function(){
 });
 
 Route::get('/qr', function () {
-	\QrCode::size(500)
+	\SimpleSoftwareIO\QrCode\Facades\QrCode::size(500)
 		->format('png')
 		->generate(public_path('images/qrcode.png'));
 	return view('qrCode');
@@ -211,21 +224,7 @@ Route::group(['middleware'=>['operator']], function(){
 
 Route::group(['middleware'=>['user']], function(){
 	Route::get('/riwayat/pemesanan','DashboardController@user')->name('dashboard_user');
-	Route::prefix('/anigatravel/order')->group(function(){
-		Route::get('/flight','OrderController@index_flight')->name('flight');
-		Route::get('/train','OrderController@index_train')->name('train');
-
-		Route::post('/flight','OrderController@rute_flight')->name('rute_flight');
-		Route::post('/train','OrderController@rute_train')->name('rute_train');
-
-		Route::post('/detail_flight','OrderController@detail_flight')->name('detail_flight');
-		Route::post('/detail_train','OrderController@detail_train')->name('detail_train');
-
-		Route::get('/flight/rute','OrderController@flight')->name('data_flight');
-		Route::get('/train/rute','OrderController@train')->name('data_train');
-
-		Route::delete('/{id_order}','OrderController@order_destroy')->name('jadwal_delete');
-	});
+	
 
 	Route::prefix('/pemesanan')->group(function(){
 		Route::get('/','PemesananController@pemesanan_index')->name('pemesanan');
@@ -294,7 +293,7 @@ Route::group(['middleware'=>['user']], function(){
 
 Route::prefix('/export')->group(function(){
 	Route::get('/pemesanan','ExportController@pemesanan', function () {
-		\QrCode::size(500)
+		\SimpleSoftwareIO\QrCode\Facades\QrCode::size(500)
 			->format('png')
 			->generate(public_path('images/qrcode.png'));
 	})->name('export_pemesanan');

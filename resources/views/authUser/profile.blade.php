@@ -1,126 +1,166 @@
-@extends('admin.admin')
-@section('title','User Profile')
-@section('content')
-    <!-- Begin Page Content -->
-    <div id="app3" class="container-fluid">
+@extends('user.user')
+@section('title','Pemesanan')
+@section('header')
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+      <a class="navbar-brand" href="{{ route('cc') }}">ANIGATRAVEL</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
-      <div class="card shadow mb-4" >
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Profile Anda</h6>
-        </div>
-        <div class="card-body">
-          <div class="user" v-for="i in profiles" v-if="profile">
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="username">Username</label>
-                <div class="form-control" style="border-radius:20px">@{{i.username}}</div>
-              </div>
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="nama_penumpang">Nama Lengkap</label>
-                <div class="form-control" style="border-radius:20px">@{{i.nama_penumpang}}</div>
-              </div>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
+          <li class="nav-item"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
+          <li class="nav-item"><a href="{{route('pemesanan')}}" class="nav-link">Keranjang</a></li>
+          <li class="nav-item"><a href="{{route('dashboard_user')}}" class="nav-link">Pemesanan Saya</a></li>
+          <li class="nav-item dropdown no-arrow active" id="app12">
+            <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{session('username')}}
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{{route('profile')}}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" v-on:click="logout_user">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                </a>
             </div>
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="jenis_kelamin">Jenis Kelamin</label>
-                <div class="form-control" style="border-radius:20px">@{{i.jenis_kelamin}}</div>
-              </div>
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="no_ktp">No KTP / No NIK</label>
-                <div class="form-control" style="border-radius:20px">@{{i.no_ktp}}</div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="email">Email</label>
-                <div class="form-control" style="border-radius:20px">@{{i.email}}</div>
-              </div>
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="telepone">No Telepon / No HP</label>
-                <div class="form-control" style="border-radius:20px">@{{i.telepone}}</div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="alamat_penumpang">Alamat Penumpang</label>
-              <textarea readonly class="form-control" style="border-radius:20px" rows="3">@{{i.alamat_penumpang}}</textarea readonly>
-            </div>
-            <button class="btn btn-success btn-user btn-block" v-if="buttonBaru" v-on:click="edit(i.id_penumpang,i.id_profile,i.username,i.password,i.nama_penumpang,i.no_ktp,i.jenis_kelamin,i.alamat_penumpang,i.email,i.telepone)">Ubah Profile</button>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+  <!-- END nav -->
+
+  <section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('../voyage/images/borobudur2.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text align-items-center">
+          <div class="col-md-12 col-sm-12 ftco-animate">
+            <h1>Profile</h1>
           </div>
-          
-          <form class="user" method="post" v-on:submit.prevent="update" v-if="baru">
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="username">Username</label>
-                <input required type="text" class="form-control" style="border-radius:20px" v-model="username" placeholder="Username" id="username">
-                <div v-if="checkError('username')" style="color:red">
-                  <strong>Warning!</strong> @{{ errors.username[0] }}.
-                </div>
-              </div>
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="nama_penumpang">Nama Lengkap</label>
-                <input required type="text" class="form-control" style="border-radius:20px" v-model="nama_penumpang" placeholder="Nama Lengkap" id="nama_penumpang">
-                <div v-if="checkError('nama_penumpang')" style="color:red">
-                  <strong>Warning!</strong> @{{ errors.nama_penumpang[0] }}.
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="jenis_kelamin">Jenis Kelamin</label>
-                <select required v-model="jenis_kelamin" class="form-control" style="border-radius:20px">
-                  <option value="Laki-Laki">Laki-Laki</option>
-                  <option value="Perempuan">Perempuan</option>
-                </select>
-                <div v-if="checkError('jenis_kelamin')" style="color:red">
-                  <strong>Warning!</strong> @{{ errors.jenis_kelamin[0] }}.
-                </div>
-              </div>
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="no_ktp">No KTP / No NIK</label>
-                <input required type="number" class="form-control" style="border-radius:20px" v-model="no_ktp" placeholder="No KTP / No NIK" id="no_ktp">
-                <div v-if="checkError('no_ktp')" style="color:red">
-                  <strong>Warning!</strong> @{{ errors.no_ktp[0] }}.
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="email">Email</label>
-                <input required type="email" class="form-control" style="border-radius:20px" v-model="email" placeholder="Email" id="email">
-                <div v-if="checkError('email')" style="color:red">
-                  <strong>Warning!</strong> @{{ errors.email[0] }}.
-                </div>
-              </div>
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="telepone">No Telepon / No HP</label>
-                <input required type="number" class="form-control" style="border-radius:20px" v-model="telepone" placeholder="No Telepon / No HP" id="telepone">
-                <div v-if="checkError('telepone')" style="color:red">
-                  <strong>Warning!</strong> @{{ errors.telepone[0] }}.
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="alamat_penumpang">Alamat Penumpang</label>
-              <textarea required class="form-control" style="border-radius:20px" v-model="alamat_penumpang" placeholder="Alamat Penumpang" id="alamat_penumpang" rows="3"></textarea>
-              <div v-if="checkError('alamat_penumpang')" style="color:red">
-                <strong>Warning!</strong> @{{ errors.alamat_penumpang[0] }}.
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <button class="btn btn-primary btn-user btn-block"><i class="fas fa-check"></i> Ubah</button>
-              </div>
-              <div class="col-sm-6">
-                <button class="btn btn-danger btn-user btn-block" v-on:click="batal"><i class="fas fa-window-close"></i> Batal</button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
-    <!-- /.container-fluid -->
+  </section>
+
 @endsection
-     
+@section('content1')
+<div style="padding:2% 8% 2% 8% ;background-color:#007bff" id="app3">
+  <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#fff">Profile</h3></div>
+  <div class="user" v-for="i in profiles" v-if="profile">
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="username">Username</label>
+        <div class="form-control" style="border-radius:20px">@{{i.username}}</div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="nama_penumpang">Nama Lengkap</label>
+        <div class="form-control" style="border-radius:20px">@{{i.nama_penumpang}}</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="jenis_kelamin">Jenis Kelamin</label>
+        <div class="form-control" style="border-radius:20px">@{{i.jenis_kelamin}}</div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="no_ktp">No KTP / No NIK</label>
+        <div class="form-control" style="border-radius:20px">@{{i.no_ktp}}</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="email">Email</label>
+        <div class="form-control" style="border-radius:20px">@{{i.email}}</div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="telepone">No Telepon / No HP</label>
+        <div class="form-control" style="border-radius:20px">@{{i.telepone}}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="text-white" for="alamat_penumpang">Alamat Penumpang</label>
+      <textarea readonly class="form-control" style="border-radius:20px" rows="3">@{{i.alamat_penumpang}}</textarea readonly>
+    </div>
+    <button style="border-radius:10px;border: 2px solid white; background:rgba(0, 123, 255, 0.3)" type="submit" class="btn btn-block text-white" v-if="buttonBaru" v-on:click="edit(i.id_penumpang,i.id_profile,i.username,i.password,i.nama_penumpang,i.no_ktp,i.jenis_kelamin,i.alamat_penumpang,i.email,i.telepone)">Ubah Profile</button>
+  </div>
+  
+  <form class="user" method="post" v-on:submit.prevent="update" v-if="baru">
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="username">Username</label>
+        <input required type="text" class="form-control" style="border-radius:20px" v-model="username" placeholder="Username" id="username">
+        <div v-if="checkError('username')" style="color:red">
+          <strong>Warning!</strong> @{{ errors.username[0] }}.
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="nama_penumpang">Nama Lengkap</label>
+        <input required type="text" class="form-control" style="border-radius:20px" v-model="nama_penumpang" placeholder="Nama Lengkap" id="nama_penumpang">
+        <div v-if="checkError('nama_penumpang')" style="color:red">
+          <strong>Warning!</strong> @{{ errors.nama_penumpang[0] }}.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="jenis_kelamin">Jenis Kelamin</label>
+        <select required v-model="jenis_kelamin" class="form-control" style="border-radius:20px">
+          <option value="Laki-Laki">Laki-Laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+        <div v-if="checkError('jenis_kelamin')" style="color:red">
+          <strong>Warning!</strong> @{{ errors.jenis_kelamin[0] }}.
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="no_ktp">No KTP / No NIK</label>
+        <input required type="number" class="form-control" style="border-radius:20px" v-model="no_ktp" placeholder="No KTP / No NIK" id="no_ktp">
+        <div v-if="checkError('no_ktp')" style="color:red">
+          <strong>Warning!</strong> @{{ errors.no_ktp[0] }}.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="email">Email</label>
+        <input required type="email" class="form-control" style="border-radius:20px" v-model="email" placeholder="Email" id="email">
+        <div v-if="checkError('email')" style="color:red">
+          <strong>Warning!</strong> @{{ errors.email[0] }}.
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label class="text-white" for="telepone">No Telepon / No HP</label>
+        <input required type="number" class="form-control" style="border-radius:20px" v-model="telepone" placeholder="No Telepon / No HP" id="telepone">
+        <div v-if="checkError('telepone')" style="color:red">
+          <strong>Warning!</strong> @{{ errors.telepone[0] }}.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="text-white" for="alamat_penumpang">Alamat Penumpang</label>
+      <textarea required class="form-control" style="border-radius:20px" v-model="alamat_penumpang" placeholder="Alamat Penumpang" id="alamat_penumpang" rows="3"></textarea>
+      <div v-if="checkError('alamat_penumpang')" style="color:red">
+        <strong>Warning!</strong> @{{ errors.alamat_penumpang[0] }}.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <button style="border-radius:10px;border: 2px solid;border-color:rgb(9, 255, 0); background:rgba(0, 123, 255, 0.3)" type="submit" class="btn btn-block text-white"><i class="fas fa-check"></i> Ubah</button>
+      </div>
+      <div class="col-sm-6">
+        <button style="border-radius:10px;border: 2px solid;border-color:rgb(255, 0, 0); background:rgba(0, 123, 255, 0.3)" type="submit" class="btn btn-block text-white" v-on:click="batal"><i class="fas fa-window-close"></i> Batal</button>
+      </div>
+    </div>
+  </form>
+</div>
+@endsection
+
 @push('js')
   <script type="text/javascript">
     var xhttp = new XMLHttpRequest();

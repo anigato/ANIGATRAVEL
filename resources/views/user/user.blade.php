@@ -32,7 +32,11 @@
 
         @yield('content1')
 
-        
+        <section style="background-color:#007bff;color:white" class="ftco-section-2" id="app3" v-if="ada">
+            <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#007bff">Login</h3></div>
+            <div class="container-fluid d-flex">
+            </div>
+        </section>
 
         {{-- @include('user.content3')
 

@@ -21,8 +21,8 @@ class AuthUser
             if (User::where('username',session('username'))) {
                 return $next($request);
             }
-            return redirect()->route('page_register');
+            return redirect()->route('cc');
         }
-        return redirect()->route('page_register');
+        return redirect()->route('cc');
     }
 }
