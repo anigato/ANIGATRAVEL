@@ -1,5 +1,5 @@
 @extends('user.user')
-@section('title','Pemesanan')
+@section('title','Profil')
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="text-white" for="alamat_penumpang">Alamat Penumpang</label>
+      <label class="text-white" for="alamat_penumpang">Alamat</label>
       <textarea readonly class="form-control" style="border-radius:20px" rows="3">@{{i.alamat_penumpang}}</textarea readonly>
     </div>
     <button style="border-radius:10px;border: 2px solid white; background:rgba(0, 123, 255, 0.3)" type="submit" class="btn btn-block text-white" v-if="buttonBaru" v-on:click="edit(i.id_penumpang,i.id_profile,i.username,i.password,i.nama_penumpang,i.no_ktp,i.jenis_kelamin,i.alamat_penumpang,i.email,i.telepone)">Ubah Profile</button>

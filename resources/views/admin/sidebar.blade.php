@@ -13,7 +13,7 @@
 
   <!-- Nav Item - Dashboard -->
   @if(session('level')=='admin'||session('level')=='operator')
-  <li class="nav-item active">
+  <li class="nav-item">
     <a class="nav-link" href="{{route('dashboard_admin')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
@@ -27,7 +27,7 @@
 
     <li class="nav-item">
       <a class="nav-link" href="{{route('user_page')}}">
-        <i class="fas fa-fw fa-users"></i>
+        <i class="fas fa-fw fa-user-tie"></i>
         <span>Petugas</span></a>
     </li>
     <li class="nav-item">
@@ -173,25 +173,6 @@
       </div>
     </li>
   @endif  <!--  -->
-
-  @if(session('level')=='user')
-    <li class="nav-item">
-      <a class="nav-link" href="{{route('flight')}}">
-        <i class="fas fa-fw fa-plane"></i>
-        <span>Pesawat</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{route('train')}}">
-        <i class="fas fa-fw fa-subway"></i>
-        <span>Kereta</span></a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="{{route('dashboard_user')}}">
-        <i class="fas fa-fw fa-history"></i>
-        <span>Riwayat Pemesanan</span></a>
-    </li>
-  @endif
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

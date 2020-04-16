@@ -1,4 +1,5 @@
 @extends('dashboard.user')
+@section('title','Menunggu Pembayaran')
 @section('pemesanan')
     <div id="app3" class="container-fluid">
       <h4 class="text-center font-weight-bold text-white text-uppercase mb-1">Menunggu Pembayaran</h4>
@@ -54,11 +55,11 @@
           <tr>
             <td style="width:45%">
               <h6>Silahkan Bayar Pesanan Sebesar</h6>
-              <div class="text-center" style="width:100%;border-radius:10px;height:33px;background-color:rgba(255,255,255,0.5);color:white"> @{{i.total}} </div>
+              <div class="text-center" style="width:100%;;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)"> @{{i.total}} </div>
             </td>
             <td style="width:45%">
-              <h6>Ke No Rekening</h6>
-              <div class="text-center" style="width:100%;border-radius:10px;height:33px;background-color:rgba(255,255,255,0.5);color:white"> 6782-01-01-98-72-53-9 </div>
+              <h6>Ke No Rekening Atas Nama "Khoerul Anam"</h6>
+              <div class="text-center" style="width:100%;;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)"> 6782-01-01-98-72-53-9 </div>
             </td>
           </tr>
           <tr>
@@ -68,7 +69,9 @@
                 <li>Harap transfer sesuai dengan nominal diatas untuk mempercepat proses</li>
                 <li>Jika lebih dari nominal diatas, dana tidak akan dikembalikan!</li>
                 <li>Jika kurang dari nominal diatas, pemesanan tidak akan diproses kecuali jika melakukan transfer ulang sisa pembayaran!</li>
-                <li><h6 class="font-weight-bold text-white">Upload Bukti Sudah Melakukan Pembayaran!!</h6></li>
+                <li><h6 class="font-weight-bold text-white">Mohon Untuk Segera Upload Bukti Pembayaran!!</h6></li>
+                <li><h6 class="font-weight-bold text-white">Harap Langsung Cek Bukti Pembayaran di Tab "Sedang Diproses" Untuk Menghindari Kesalahan!!</h6></li>
+                <li><h6 class="font-weight-bold text-white">Kami Tidak Bertanggung Jawab Jika Ada Kesalahan Pada Bukti Transfer!!</h6></li>
               </ul>
             </td>
           </tr>

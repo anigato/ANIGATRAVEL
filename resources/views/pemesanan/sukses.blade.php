@@ -1,4 +1,5 @@
 @extends('dashboard.user')
+@section('title','Pesanan Sukses')
 @section('pemesanan')
 
     <div id="app3" class="container-fluid">
@@ -59,7 +60,7 @@
             </td>
             <td style="width:2%"></td>
             <td style="width:49%">
-              <h6>Ke No Rekening</h6>
+              <h6>Ke No Rekening Atas Nama "Khoerul Anam"</h6>
               <div class="text-center" style="width:100%;border-radius:10px;height:33px;background-color:rgba(255,255,255,0.5);color:white"> 6782-01-01-98-72-53-9 </div>
             </td>
           </tr>

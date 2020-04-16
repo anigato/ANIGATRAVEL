@@ -47,7 +47,7 @@
         <div class="form-group">
           <label for="">Kereta</label>
           <select v-model="id_transportasi" required class="form-control" style="border-radius:20px" searchable="Search here..">
-            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.tipe_transportasi}} | @{{tran.tipe_penumpang}} | @{{tran.nama_type}} @{{tran.nama_transportasi}}</option>
+            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.tipe_transportasi}} - @{{tran.nama_type}} @{{tran.nama_transportasi}} (@{{tran.tipe_penumpang}})</option>
           </select>
           <div v-if="checkError('id_transportasi')" style="color:red">
               <strong>Warning!</strong> @{{ errors.id_transportasi[0] }}.
@@ -94,7 +94,7 @@
           <div class="form-group">
           <label for="">Kereta</label>
             <select v-model="id_transportasi" required class="form-control" style="border-radius:20px" searchable="Search here..">
-            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.tipe_transportasi}} | @{{tran.tipe_penumpang}} | @{{tran.nama_type}} @{{tran.nama_transportasi}}</option>
+            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.tipe_transportasi}} - @{{tran.nama_type}} @{{tran.nama_transportasi}} (@{{tran.tipe_penumpang}})</option>
           </select>
           <div v-if="checkError('level')" style="color:red">
               <strong>Warning!</strong> @{{ errors.level[0] }}.
@@ -144,7 +144,7 @@
               <tbody>
                 <tr v-for="i in userAll">
                   <td>@{{i.nama_lengkap}}</td>
-                  <td>@{{i.tipe_transportasi}} | @{{i.tipe_penumpang}} | @{{i.nama_type}} @{{i.nama_transportasi}}</td>
+                  <td>@{{i.tipe_transportasi}} - @{{i.nama_type}} @{{i.nama_transportasi}} (@{{i.tipe_penumpang}})</td>
                   <td>@{{i.no_ktp}}</td>
                   <td>@{{i.no_sim}}</td>
                   <td>

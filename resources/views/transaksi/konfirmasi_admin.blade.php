@@ -181,7 +181,13 @@
                 
                 }
                 if (this.status == 200) {
-                  alert('berhasil dkonfirmasi')
+                  swal({
+                    title: "Berhasil!",
+                    text: "Pesanan berhasil Dikonfirmasi!",
+                    icon: "success",
+                    button: "OK",
+                  });
+                  window.location.replace("{{ route('dashboard_admin') }}");
                 }
               }
             }

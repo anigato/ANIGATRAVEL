@@ -1,9 +1,9 @@
 @extends('user.user')
-@section('title','Pemesanan')
+@section('title','Pengecekan')
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
-      <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
+      <a class="navbar-brand" href="{{route('cc')}}">ANIGATRAVEL</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -65,6 +65,7 @@
 @section('content1')
 <div id="app3">
   <section style="background-color:#007bff;color:white" class="ftco-section-2" id="app3" v-if="Checkout">
+    <br>
     <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#fff">Pengecekan</h3></div>
     <div class="container-fluid d-flex">
       <table style="width:100%" v-for="i in details" class="table table-borderless">
@@ -78,10 +79,10 @@
         </tr>
         <tr>
           <td></td>
-          <td style="width:25%"><div class="text-center" style="width:100%;border-radius:10px;background-color:rgba(255,255,255,0.5)">@{{i.nama_penumpang}}</div></td>
-          <td style="width:25%"><div class="text-center" style="width:100%;border-radius:10px;background-color:rgba(255,255,255,0.5)">@{{i.telepone}}</div></td>
-          <td style="width:25%"><div class="text-center" style="width:100%;border-radius:10px;background-color:rgba(255,255,255,0.5)">@{{i.no_ktp}}</div></td>
-          <td style="width:25%"><div class="text-center" style="width:100%;border-radius:10px;background-color:rgba(255,255,255,0.5)">@{{i.email}}</div></td>
+          <td style="width:25%"><div class="text-center" style="width:100%;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)">@{{i.nama_penumpang}}</div></td>
+          <td style="width:25%"><div class="text-center" style="width:100%;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)">@{{i.telepone}}</div></td>
+          <td style="width:25%"><div class="text-center" style="width:100%;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)">@{{i.no_ktp}}</div></td>
+          <td style="width:25%"><div class="text-center" style="width:100%;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)">@{{i.email}}</div></td>
         <td></td>
         </tr>
       </table>
@@ -97,7 +98,8 @@
             <td></td>
             <td style="width: 50%"><h6 class="font-weight-bold">Tiket</h6></td>
             <td style="width: 25%"><h6 class="font-weight-bold">Harga</h6></td>
-            <td style="width: 25%"><h6 class="font-weight-bold">No Kursi</h6></td>
+            <td style="width: 20%"><h6 class="font-weight-bold">No Kursi</h6></td>
+            <td style="width:5%"></td>
             <td></td>
           </tr>
         </thead>
@@ -105,15 +107,31 @@
           <tr v-for="tik in tikets" :value="tik.id_tiket">
             <td></td>
             <td>
-              <div class="col-sm-10">
-                <h6 class="font-weight-bold">@{{tik.nama_type}} @{{tik.keterangan}}</h6>
-                <h6>@{{ tik.nama_tempat_awal }} (<span class="font-weight-bold">@{{tik.wilayah_awal}}</span>) <i class="fas fa-arrow-right"></i></h6>
-                <h6>@{{ tik.nama_tempat_akhir }} (<span class="font-weight-bold">@{{tik.wilayah_akhir}}</span>)</h6>
-                <p>@{{tik.tanggal_berangkat}} @{{tik.waktu_berangkat}}</p>
+              <div class="row text-center">
+                <div class="col-lg-12">
+                  <h6 class="font-weight-bold">@{{tik.nama_type}} @{{tik.keterangan}}</h6>
+                </div>
+                <div class="col-lg-12">
+                  <hr class="text-white">
+                </div>
+                <div class="col-lg-5">
+                  <h6>@{{ tik.nama_tempat_awal }} (<span class="font-weight-bold">@{{tik.wilayah_awal}}</span>)</h6>
+                    <p>@{{tik.tanggal_berangkat}} @{{tik.waktu_berangkat}}</p>
+                </div>
+                <div class="col-lg-2"><i class="fas fa-arrow-right"></i></h6></div>
+                <div class="col-lg-5">
+                  <h6>@{{ tik.nama_tempat_akhir }} (<span class="font-weight-bold">@{{tik.wilayah_akhir}}</span>)</h6>
+                  <p>@{{tik.tanggal_sampai}} @{{tik.waktu_sampai}}</p>
+                </div>
               </div>
             </td>
-            <td class="text-center ">@{{tik.harga}}</td>
+            <td class="text-center ">Rp. @{{tik.harga}},-</td>
             <td class="text-center ">@{{tik.no_kursi}}</td>
+            <td>
+              <button style="border-radius:8px" class="btn btn-danger btn-sm" type="submit" v-on:click="del(tik.id_tiket)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
             <td></td>
           </tr>
         </tbody>
@@ -123,7 +141,7 @@
             <td>
               <a href="{{route('pemesanan')}}" style="width:50%;border-radius:10px;" class="btn btn-warning"><i class="fas fa-angle-left"></i> Kembali</a>
             </td>
-            <td class="text-center"><strong>Total+Admin : <span class="text-center font-weight-bold text-warning text-uppercase mb-1">Rp. @{{tik.total}},-</span></strong></td>
+            <td class="text-center"><strong>Total + Admin : <span class="text-center font-weight-bold text-white text-uppercase mb-1">Rp. @{{tik.total}},-</span></strong></td>
             <td>
               <button style="width:100%;border-radius:10px;" v-on:click="pembayaran(tik.total)" class="btn btn-success">Pesan <i class="fas fa-angle-right"></i></button>
             </td>
@@ -137,6 +155,7 @@
 
 
   <section style="background-color:#007bff;color:white" class="ftco-section-2" id="app3" v-if="Bayar">
+    <br>
     <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#fff">Pengecekan</h3></div>
     <div class="container-fluid d-flex">
       <table v-for="i in totals" class="table table-borderless">
@@ -144,11 +163,11 @@
           <td style="width:5%"></td>
           <td style="width:45%">
             <h6>Silahkan Bayar Pesanan Sebesar</h6>
-            <input class="text-center" type="number" style="width:100%;border-radius:10px;background-color:rgba(255,255,255,0.5);color:white" readonly v-model="total">
+            <input class="text-center" type="number" style="width:100%;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5);color:white" readonly v-model="total">
           </td>
           <td style="width:45%">
-            <h6>Ke No Rekening</h6>
-            <div class="text-center" style="width:100%;border-radius:10px;height:33px;background-color:rgba(255,255,255,0.5);color:white">6782-01-01-98-72-53-9</div>
+            <h6>Ke No Rekening Atas Nama "Khoerul Anam"</h6>
+            <div class="text-center" style="width:100%;border:2px solid white;border-radius:10px;background-color:rgba(0, 81, 255,0.5)">6782-01-01-98-72-53-9</div>
           </td>
           <td style="width:5%"></td>
         </tr>
@@ -176,7 +195,7 @@
   </section>
   
 </div>
-
+@include('user.about')
 @endsection
      
 @push('js')

@@ -75,7 +75,7 @@
           <input type="number" class="form-control" readonly v-model="total">
         </div>
         <div class="col-sm-6">
-          <h6>Ke No Rekening</h6>
+          <h6>Ke No Rekening Atas Nama "Khoerul Anam"</h6>
           <input class="form-control" type="number" readonly placeholder="6782-01-01-98-72-53-9">
         </div>
         <div class="col-sm-12">

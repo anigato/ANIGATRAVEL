@@ -1,5 +1,5 @@
 @extends('user.user')
-@section('title','Pemesanan')
+@section('title','Daftar')
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
@@ -13,10 +13,8 @@
         <li class="nav-item"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
         <li class="nav-item"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
 
-        @if(session('level')==null)
         <li class="nav-item"><a href="{{route('user_login')}}" class="nav-link">Login</a></li>
         <li class="nav-item active"><a href="{{route('user_register')}}" class="nav-link">Daftar</a></li>
-        @endif
 
       </ul>
       </div>
@@ -102,10 +100,6 @@
           var url = "{{route('user_daftar')}}";
           var data='?username='+this.username
           +'&nama_penumpang='+this.nama_penumpang
-          +'&alamat_penumpang='+this.alamat_penumpang
-          +'&tanggal_lahir='+this.tanggal_lahir
-          +'&jenis_kelamin='+this.jenis_kelamin
-          +'&telepone='+this.telepone
           +'&password='+this.password
           +'&confirm_password='+this.confirm_password;
 

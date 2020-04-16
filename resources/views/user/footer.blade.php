@@ -11,10 +11,11 @@
                 <div class="ftco-footer-widget mb-5">
                 <h2 class="ftco-heading-2">Informasi Website</h2>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="py-2 d-block">Dsn. Sukajadi, RT 33, RW 08, Ds. Sukanagara, Kec. Padaherang, Kab. Pangandaran, Prov. Jawa Barat, Indonesia, 46384</a></li>
+                    <li><p class="py-2 d-block">Dsn. Sukajadi, RT 33, RW 08, Ds. Sukanagara, Kec. Padaherang, Kab. Pangandaran, Prov. Jawa Barat, Indonesia, 46384</p></li>
                     <li><a href="tel:+6285210665025" class="py-2 d-block">0852 1066 5025</a></li>
                     <li><a class="py-2 d-block" href="mailto:anigato.net@gmail.com">anigato.net@gmail.com</a></li>
                     <li><a class="py-2 d-block" href="mailto:anigato@attaqwapml.sch.id">anigato@attaqwapml.sch.id</a></li>
+                    <li><a class="py-2 d-block" href="https::github.com/anam140601">Github</a></li>
                 </ul>
                 </div>
             </div>

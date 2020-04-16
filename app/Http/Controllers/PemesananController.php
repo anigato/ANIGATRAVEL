@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use App\Rute;
 use App\Transportasi;
 use Validator;
-use DB;
 use App\User;
 use Hash;
 use App\Type_transportasi;
@@ -21,6 +20,7 @@ use Carbon\Carbon;
 use Image;
 use File;
 use App\Konfirmasi_pemesanan;
+use Illuminate\Support\Facades\DB as DB;
 
 class PemesananController extends Controller
 {
@@ -69,6 +69,8 @@ class PemesananController extends Controller
                             rutes.wilayah_akhir,
                             jadwals.waktu_berangkat,
                             jadwals.tanggal_berangkat,
+                            jadwals.waktu_sampai,
+                            jadwals.tanggal_sampai,
                             jadwals.harga
                             ')
                         ->get();

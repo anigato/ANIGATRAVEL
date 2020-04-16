@@ -1,4 +1,5 @@
 @extends('dashboard.user')
+@section('title','Pesanan Batal')
 @section('pemesanan')
 
     <div id="app3" class="container-fluid">
@@ -53,9 +54,11 @@
             </tr>
           </tbody>
         </table>
-        <div class="form-group row">
+        <div class="form-group row" v-for="i in confirms">
           <div class="col-sm-2"><button style="border-radius:20px;border-color:lightblue" class="btn btn-primary btn-block" type="submit" v-on:click="lihat">Lihat Foto</button></div>
           <div class="col-sm-2"><button style="border-radius:20px;border-color:red" class="btn btn-primary btn-block" v-on:click="konfirmasi">back</button></div>
+          {{-- <div class="col-sm-2"><button style="border-radius:20px;border-color:red" class="btn btn-primary btn-block" v-on:click="pesan(i.kode_pemesanan)">Pesan Lagi</button></div> --}}
+          {{-- <div class="col-sm-2"><button style="border-radius:20px;border-color:red" class="btn btn-primary btn-block" v-on:click="minta(i.kode_pemesanan)">Minta Pengembalian Uang</button></div> --}}
         </div>
       </div>
 
@@ -166,6 +169,14 @@
             xhttp.open("GET", url+data_token+data, true);
             xhttp.setRequestHeader("X-CSRF-TOKEN","{{ csrf_token() }}");
             xhttp.send();
+          },
+          pesan : function(kode_pemesanan){
+            swal({
+              title: "Terimakasih",
+              text: "Telah memesan kembali, mohon maaf atas ketidaknyamanannya",
+              icon: "success",
+              button: "OK",
+            });
           },
           kembali : function(kode_pemesanan){
             this.Konfirmasi = false;

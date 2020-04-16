@@ -1,9 +1,9 @@
 @extends('user.user')
-@section('title','Pemesanan')
+@section('title','Login')
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
-      <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
+      <a class="navbar-brand" href="{{route('cc')}}">ANIGATRAVEL</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -13,7 +13,7 @@
         <li class="nav-item"><a href="{{ route('cc') }}" class="nav-link">Layar Awal</a></li>
         <li class="nav-item"><a href="{{route('manual')}}" class="nav-link">Manual</a></li>
 
-        <li class="nav-item active"><a href="{{route('login')}}" class="nav-link">Login</a></li>
+        <li class="nav-item active"><a href="{{route('user_login')}}" class="nav-link">Login</a></li>
         <li class="nav-item"><a href="{{route('user_register')}}" class="nav-link">Daftar</a></li>
         
       </ul>
@@ -91,6 +91,9 @@
                   // window.location.replace("{{ route('dashboard_user') }}");
                   window.location.replace("{{ route('cc') }}");
                 }
+                if (this.status == 201) {
+				        		window.location.replace("{{ route('dashboard_admin') }}");
+				        	}
               }
           }
 

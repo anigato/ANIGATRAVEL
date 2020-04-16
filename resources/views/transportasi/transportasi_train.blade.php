@@ -113,7 +113,7 @@
                 <tr>
                   <th>Kode</th>
                   <th>Jumlah Kursi</th>
-                  <th>Keterangan</th>
+                  <th>Kelas</th>
                   <th>Kereta</th>
                   <th></th>
                 </tr>
@@ -122,7 +122,7 @@
                 <tr>
                   <th>Kode</th>
                   <th>Jumlah Kursi</th>
-                  <th>Keterangan</th>
+                  <th>Kelas</th>
                   <th>Kereta</th>
                   <th></th>
                 </tr>

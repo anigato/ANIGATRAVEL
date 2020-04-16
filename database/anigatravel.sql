@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2020 at 02:01 AM
+-- Generation Time: Mar 03, 2020 at 06:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,27 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `anigatravel`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detail_pemesanans`
---
-
-CREATE TABLE `detail_pemesanans` (
-  `id_detail` int(10) UNSIGNED NOT NULL,
-  `kode_tiket` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kode_pemesanan` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `detail_pemesanans`
---
-
-INSERT INTO `detail_pemesanans` (`id_detail`, `kode_tiket`, `kode_pemesanan`, `created_at`, `updated_at`) VALUES
-(9, 'TIK1510,TIK1545,', 'PEMS00HZQNT', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,8 +56,8 @@ INSERT INTO `diskons` (`id_diskon`, `kode_diskon`, `diskon`, `maximal_diskon`, `
 CREATE TABLE `drivers` (
   `id_driver` int(10) UNSIGNED NOT NULL,
   `nama_lengkap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_ktp` int(20) NOT NULL,
-  `no_sim` int(20) NOT NULL,
+  `no_ktp` int(50) NOT NULL,
+  `no_sim` int(50) NOT NULL,
   `id_transportasi` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -92,7 +71,8 @@ INSERT INTO `drivers` (`id_driver`, `nama_lengkap`, `no_ktp`, `no_sim`, `id_tran
 (5, 'balalala', 1213123, 1213123, 22, '2020-01-18 14:49:11', '2020-01-18 14:49:11'),
 (7, 'marsmello', 1111111, 1111111, 23, '2020-01-18 14:58:45', '2020-01-18 15:24:50'),
 (8, 'Robert Dowly Junior', 1, 1, 26, '2020-01-18 15:26:16', '2020-01-18 15:26:16'),
-(9, 'Khoerul', 1640986544, 998, 24, '2020-01-29 02:58:50', '2020-01-29 02:58:50');
+(9, 'Khoerul', 1640986544, 998, 24, '2020-01-29 02:58:50', '2020-01-29 02:58:50'),
+(16, 'dwadad12', 12312312, 2131231, 26, '2020-02-08 12:04:09', '2020-02-08 12:04:09');
 
 -- --------------------------------------------------------
 
@@ -140,7 +120,18 @@ INSERT INTO `jadwals` (`id_jadwal`, `id_rute`, `harga`, `waktu_berangkat`, `tang
 (14, 17, '120000', '01:00:00', '2020-01-21', '14:00:00', '2020-01-21', '2020-01-20 00:47:37', '2020-01-20 00:47:37'),
 (15, 17, '90000', '12:59:00', '2020-12-12', '14:00:00', '2020-12-12', '2020-01-20 00:48:11', '2020-01-24 01:44:40'),
 (16, 39, '1200000', '00:12:00', '2020-12-12', '00:12:00', '0012-12-12', '2020-01-27 22:48:51', '2020-01-28 02:09:27'),
-(17, 38, '1000000', '12:01:00', '2020-12-12', '12:12:00', '2020-12-12', '2020-01-28 01:05:25', '2020-01-28 01:13:08');
+(17, 38, '1000000', '12:01:00', '2020-12-12', '12:12:00', '2020-12-12', '2020-01-28 01:05:25', '2020-01-28 01:13:08'),
+(18, 42, '1500000', '00:12:00', '2020-12-12', '12:12:00', '2020-12-12', '2020-02-07 23:41:40', '2020-02-07 23:41:40'),
+(21, 43, '5400000', '00:12:00', '2020-12-12', '12:31:00', '2020-03-12', '2020-02-07 23:48:30', '2020-02-07 23:48:30'),
+(22, 45, '1250000', '13:21:00', '2020-12-12', '13:23:00', '2020-12-31', '2020-02-08 00:43:52', '2020-02-08 15:09:50'),
+(23, 41, '500000', '03:12:00', '2020-12-12', '02:13:00', '2020-02-02', '2020-02-08 00:44:36', '2020-02-08 00:44:36'),
+(24, 45, '100000', '00:12:00', '2020-12-12', '03:12:00', '2021-12-12', '2020-02-08 15:05:39', '2020-02-08 15:05:39'),
+(25, 44, '1500000', '00:31:00', '2020-12-12', '00:12:00', '2021-12-04', '2020-02-08 15:06:12', '2020-02-08 15:06:12'),
+(26, 44, '120000', '12:31:00', '2020-12-12', '03:12:00', '2021-12-21', '2020-02-08 15:11:23', '2020-02-08 15:11:23'),
+(27, 49, '1250000', '05:14:00', '2020-12-12', '02:11:00', '2020-12-13', '2020-02-13 00:48:33', '2020-02-13 00:48:33'),
+(28, 50, '500000', '00:12:00', '2020-12-12', '14:13:00', '2021-04-11', '2020-02-13 00:52:59', '2020-02-13 00:52:59'),
+(29, 50, '1200000', '02:12:00', '2020-12-12', '15:12:00', '2021-12-03', '2020-02-13 01:47:57', '2020-02-13 01:48:44'),
+(30, 49, '540000', '00:31:00', '2020-12-12', '02:14:00', '2020-12-15', '2020-02-13 01:50:51', '2020-02-13 01:50:51');
 
 -- --------------------------------------------------------
 
@@ -170,7 +161,31 @@ INSERT INTO `konfirmasi_pemesanans` (`id_konfirmasi`, `kode_pemesanan`, `nama_fo
 (19, 'PEMS00A3YKU', '1580209936_5e3017104e21c.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-01-28 11:12:27', '2020-01-28 11:12:27'),
 (20, 'PEMS00RIDG7', '1580268696_5e30fc9878831.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-01-29 03:31:38', '2020-01-29 03:31:38'),
 (21, 'PEMS00ZVIO2', '1580787965_5e38e8fdc3a53.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-04 03:46:09', '2020-02-04 03:46:09'),
-(22, 'PEMS00EOH55', '1580808395_5e3938cb5f3f0.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-04 09:26:35', '2020-02-04 09:26:35');
+(22, 'PEMS00EOH55', '1580808395_5e3938cb5f3f0.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-04 09:26:35', '2020-02-04 09:26:35'),
+(23, 'PEMS00CIVT1', '1581174758_5e3ecfe66bcc4.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-08 15:12:42', '2020-02-08 15:12:42'),
+(24, 'PEMS00IRL8Y', '1581177515_5e3edaab7d924.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-08 15:58:37', '2020-02-08 15:58:37'),
+(25, 'PEMS00WU8G8', '1581178728_5e3edf68aa6b1.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-08 16:18:49', '2020-02-08 16:18:49'),
+(26, 'PEMS00LQQR0', '1581404506_5e42515a7c8f8.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-11 07:01:48', '2020-02-11 07:01:48'),
+(30, 'PEMS00V9O9B', '1581409505_5e4264e12e974.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-11 08:25:05', '2020-02-11 08:25:05'),
+(31, 'PEMS00OPUCC', '1581462765_5e4334ed5c737.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-11 23:12:47', '2020-02-11 23:12:47'),
+(32, 'PEMS001TIYH', '1581473558_5e435f168ae90.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-11 23:15:25', '2020-02-12 02:12:40'),
+(33, 'PEMS00LRHYP', '1581482755_5e4383034da4a.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-12 04:45:56', '2020-02-12 04:45:56'),
+(34, 'PEMS00SCKHY', '1581512401_5e43f6d1e743c.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-12 12:58:47', '2020-02-12 13:00:03'),
+(35, 'PEMS00G8R0H', '1581512586_5e43f78a27bf3.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-12 13:03:09', '2020-02-12 13:03:09'),
+(36, 'PEMS00DMAP9', '1581513586_5e43fb723b79f.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-12 13:19:48', '2020-02-12 13:19:48'),
+(37, 'PEMS00KYLKX', '1581751750_5e479dc6d3162.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-15 07:29:14', '2020-02-15 07:29:14'),
+(38, 'PEMS003R3FY', '1581811884_5e4888ac97c10.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-16 00:11:27', '2020-02-16 00:11:27'),
+(39, 'PEMS00FIYZQ', '1581811923_5e4888d34cf77.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-16 00:12:03', '2020-02-16 00:12:03'),
+(40, 'PEMS00HIQ7F', '1581811944_5e4888e878ea5.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-16 00:12:25', '2020-02-16 00:12:25'),
+(41, 'PEMS00FFZDR', '1581848230_5e4916a60dbf9.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-16 10:17:12', '2020-02-16 10:17:12'),
+(42, 'PEMS00I38SQ', '1581851599_5e4923cfe2c41.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-16 11:13:22', '2020-02-16 11:13:22'),
+(43, 'PEMS002SO8A', '1581856156_5e49359c5c20d.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-16 12:28:20', '2020-02-16 12:29:18'),
+(44, 'PEMS00KSRWG', '1582973257_5e5a41497e101.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-18 03:04:50', '2020-02-29 10:47:39'),
+(45, 'PEMS00T9D9J', '1582333612_5e507eac6486f.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-22 01:06:54', '2020-02-22 01:06:54'),
+(46, 'PEMS0099XEX', '1582334872_5e508398f14c6.jpg', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-22 01:27:54', '2020-02-22 01:27:54'),
+(47, 'PEMS00TOI92', '1582973351_5e5a41a79115e.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-02-29 10:49:12', '2020-02-29 10:49:12'),
+(48, 'PEMS00YGT9T', '1583076275_5e5bd3b32b87b.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-03-01 15:24:35', '2020-03-01 15:24:35'),
+(49, 'PEMS00TTQH5', '1583076392_5e5bd42859ef3.png', '245|300|500', 'C:\\xampp\\htdocs\\anigatravel\\storage\\app/public/images', '2020-03-01 15:26:32', '2020-03-01 15:26:32');
 
 -- --------------------------------------------------------
 
@@ -259,7 +274,8 @@ CREATE TABLE `pemesanans` (
   `total` int(151) NOT NULL,
   `id_penumpang` int(11) NOT NULL,
   `id_petugas` int(11) DEFAULT NULL,
-  `status` enum('Menunggu Konfirmasi User','Menunggu Konfirmasi Admin','Sukses') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Menunggu Konfirmasi User',
+  `status` enum('Menunggu Konfirmasi User','Menunggu Konfirmasi Admin','Sukses','Batal') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Menunggu Konfirmasi User',
+  `ket_batal` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -268,15 +284,38 @@ CREATE TABLE `pemesanans` (
 -- Dumping data for table `pemesanans`
 --
 
-INSERT INTO `pemesanans` (`id_pemesanan`, `kode_pemesanan`, `total`, `id_penumpang`, `id_petugas`, `status`, `created_at`, `updated_at`) VALUES
-(36, 'PEMS00WK5Z3', 2207000, 3, NULL, 'Sukses', '2019-11-11 06:02:18', '2020-02-03 03:50:13'),
-(37, 'PEMS003ABHN', 2407000, 3, NULL, 'Sukses', '2020-01-28 08:25:14', '2020-02-04 02:17:04'),
-(38, 'PEMS00EKASN', 4407000, 3, NULL, 'Sukses', '2020-01-28 09:54:43', '2020-01-30 14:17:35'),
-(39, 'PEMS00SOCFL', 2007000, 3, NULL, 'Sukses', '2020-01-28 10:17:09', '2020-01-29 04:54:11'),
-(40, 'PEMS00A3YKU', 2007000, 3, NULL, 'Sukses', '2020-01-28 11:09:23', '2020-01-29 04:53:54'),
-(41, 'PEMS00ZVIO2', 2207000, 3, NULL, 'Sukses', '2020-01-29 02:20:31', '2020-02-04 03:46:29'),
-(42, 'PEMS00RIDG7', 1007000, 3, NULL, 'Sukses', '2020-01-29 03:31:08', '2020-01-29 04:52:46'),
-(43, 'PEMS00EOH55', 2007000, 3, NULL, 'Sukses', '2020-02-04 09:25:57', '2020-02-04 09:27:29');
+INSERT INTO `pemesanans` (`id_pemesanan`, `kode_pemesanan`, `total`, `id_penumpang`, `id_petugas`, `status`, `ket_batal`, `created_at`, `updated_at`) VALUES
+(44, 'PEMS00CIVT1', 1377000, 3, NULL, 'Sukses', NULL, '2020-02-08 15:11:59', '2020-02-08 15:13:07'),
+(45, 'PEMS00WU8G8', 1257000, 3, NULL, 'Sukses', NULL, '2020-02-08 15:32:36', '2020-02-11 07:02:48'),
+(46, 'PEMS00IRL8Y', 127000, 3, NULL, 'Sukses', NULL, '2020-02-08 15:58:11', '2020-02-09 03:23:24'),
+(47, 'PEMS00H5EI9', 2507000, 5, NULL, 'Menunggu Konfirmasi User', NULL, '2020-02-02 00:44:15', '2020-02-11 00:44:15'),
+(48, 'PEMS00D2C0A', 1257000, 6, NULL, 'Menunggu Konfirmasi User', NULL, '2020-02-02 01:06:03', '2020-02-11 01:06:03'),
+(49, 'PEMS00OPUCC', 6107000, 3, 10, 'Sukses', NULL, '2020-01-26 02:09:55', '2020-02-14 14:34:34'),
+(50, 'PEMS001TIYH', 107000, 3, 9, 'Batal', 'transaksi tidak sesuai', '2020-01-26 03:10:51', '2020-02-12 03:16:14'),
+(51, 'PEMS00CP1I8', 107000, 8, NULL, 'Menunggu Konfirmasi User', NULL, '2020-02-11 04:35:59', '2020-02-11 04:35:59'),
+(52, 'PEMS00LQQR0', 1257000, 10, NULL, 'Sukses', NULL, '2020-02-11 07:00:33', '2020-02-11 07:03:12'),
+(57, 'PEMS00V9O9B', 127000, 10, 9, 'Batal', 'gambar burk', '2020-02-11 08:23:34', '2020-02-12 03:18:09'),
+(58, 'PEMS00HIQ7F', 1377000, 3, 10, 'Sukses', NULL, '2020-02-12 02:13:12', '2020-02-16 00:15:58'),
+(59, 'PEMS00TTQH5', 107000, 10, 9, 'Sukses', NULL, '2020-02-12 03:29:31', '2020-03-01 15:27:14'),
+(60, 'PEMS00LRHYP', 1507000, 11, 9, 'Sukses', NULL, '2020-02-12 04:45:14', '2020-02-12 04:46:31'),
+(61, 'PEMS00SCKHY', 207000, 12, 13, 'Sukses', NULL, '2020-02-12 12:57:32', '2020-02-12 13:00:24'),
+(62, 'PEMS00G8R0H', 1507000, 12, 13, 'Batal', 'silahkan cek lagi.. fotonya salah', '2020-02-12 13:02:12', '2020-02-12 13:03:42'),
+(63, 'PEMS00DMAP9', 1507000, 12, 13, 'Sukses', NULL, '2020-02-12 13:19:21', '2020-02-12 13:20:26'),
+(64, 'PEMS00FIYZQ', 4667000, 3, 10, 'Sukses', NULL, '2020-02-14 01:03:12', '2020-02-16 00:15:50'),
+(65, 'PEMS00KYLKX', 1257000, 10, 10, 'Sukses', NULL, '2020-02-15 07:27:24', '2020-02-16 00:15:41'),
+(66, 'PEMS003R3FY', 1707000, 3, 10, 'Sukses', NULL, '2020-02-16 00:11:00', '2020-02-16 00:15:31'),
+(67, 'PEMS00FFZDR', 1507000, 11, 10, 'Batal', 'error', '2020-02-16 10:11:22', '2020-02-16 11:10:08'),
+(68, 'PEMS00I38SQ', 2407000, 11, 10, 'Batal', 'lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet lorem ipsum dollor sit amet', '2020-02-16 10:19:58', '2020-02-16 11:14:05'),
+(69, 'PEMS00T9D9J', 2407000, 11, 9, 'Sukses', NULL, '2020-02-16 12:26:52', '2020-02-22 14:18:05'),
+(70, 'PEMS002SO8A', 1747000, 11, NULL, 'Menunggu Konfirmasi Admin', NULL, '2020-02-16 12:28:00', '2020-02-16 12:28:20'),
+(71, 'PEMS0099XEX', 6157000, 11, 9, 'Sukses', NULL, '2020-02-16 13:54:00', '2020-03-01 14:12:09'),
+(72, 'PEMS00KSRWG', 507000, 3, 9, 'Sukses', NULL, '2020-02-18 03:02:58', '2020-03-01 14:12:02'),
+(73, 'PEMS002DKNG', 1257000, 11, NULL, 'Menunggu Konfirmasi User', NULL, '2020-02-21 15:42:02', '2020-02-21 15:42:02'),
+(74, 'PEMS00RKAI2', 547000, 11, NULL, 'Menunggu Konfirmasi User', NULL, '2020-02-21 23:57:00', '2020-02-21 23:57:00'),
+(75, 'PEMS00TGP3J', 3537000, 3, NULL, 'Menunggu Konfirmasi User', NULL, '2020-02-22 11:46:43', '2020-02-22 11:46:43'),
+(76, 'PEMS00TOI92', 1207000, 3, 9, 'Sukses', NULL, '2020-02-29 09:56:26', '2020-03-01 14:11:51'),
+(77, 'PEMS00OPFZ3', 547000, 3, NULL, 'Menunggu Konfirmasi User', NULL, '2020-03-01 15:21:09', '2020-03-01 15:21:09'),
+(78, 'PEMS00YGT9T', 1207000, 3, 9, 'Sukses', NULL, '2020-03-01 15:24:01', '2020-03-01 15:25:03');
 
 -- --------------------------------------------------------
 
@@ -287,13 +326,13 @@ INSERT INTO `pemesanans` (`id_pemesanan`, `kode_pemesanan`, `total`, `id_penumpa
 CREATE TABLE `penumpangs` (
   `id_penumpang` int(10) UNSIGNED NOT NULL,
   `level` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
-  `username` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_penumpang` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat_penumpang` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `jenis_kelamin` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telepone` int(13) NOT NULL,
+  `username` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_penumpang` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat_penumpang` text COLLATE utf8mb4_unicode_ci,
+  `tanggal_lahir` date DEFAULT NULL,
+  `jenis_kelamin` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telepone` char(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -304,9 +343,20 @@ CREATE TABLE `penumpangs` (
 --
 
 INSERT INTO `penumpangs` (`id_penumpang`, `level`, `username`, `password`, `nama_penumpang`, `alamat_penumpang`, `tanggal_lahir`, `jenis_kelamin`, `telepone`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'User', 'asdaa', '$2y$10$jt6kL0imlV5ik1wkbry1hegjX4YGiFA/320bjUFXfNdcCueWk.OZi', 'asdaa', 'asdaa', '2019-12-17', 'Perempuan', 123123123, 'u9A6lmiOP3aH5sTJjbT6LPcoZx1xSQ3JIK1BO6oWmimvXzzMTA5Yl7gAwFKI', '2019-12-02 02:43:12', '2020-01-17 03:56:59'),
-(2, 'User', 'aaaaaaaaaa', '$2y$10$1fMQSdCEC6u.9BLLhchxgORyKILw6PCl.uy367TNyl9wYaWLYZK1m', 'aaaaaaaaaa', 'aaaaaaaaaa', '2020-01-07', 'Laki-Laki', 1234567890, 'CRrteAedhb9hTzH6Zp2utdRryBScCgONUwYbRQj9MXGrjTqp5jXObO6Z4FKM', '2020-01-09 01:51:59', '2020-01-09 01:51:59'),
-(3, 'User', 'wasdwasd', '$2y$10$y8WHBxhEP2xwqtIMoJFoR.hMHGCL5lJvEXWTXwAbc3UqVD3J896QS', 'wasdwasd', 'alamatwasd', '2001-06-14', 'Laki-Laki', 85210123, 'n1zvdSOeYmcmFls4AGAOlUsecr4FAIdAP4On6u9sGSGxw4u1CdZ9QSaqs2Nx', '2020-01-15 07:31:36', '2020-02-06 15:51:59');
+(1, 'User', 'asdaa', '$2y$10$jt6kL0imlV5ik1wkbry1hegjX4YGiFA/320bjUFXfNdcCueWk.OZi', 'asdaa', 'asdaa', '2019-12-17', 'Perempuan', '123123123', 'u9A6lmiOP3aH5sTJjbT6LPcoZx1xSQ3JIK1BO6oWmimvXzzMTA5Yl7gAwFKI', '2019-12-02 02:43:12', '2020-01-17 03:56:59'),
+(2, 'User', 'aaaaaaaaaa', '$2y$10$1fMQSdCEC6u.9BLLhchxgORyKILw6PCl.uy367TNyl9wYaWLYZK1m', 'aaaaaaaaaa', 'aaaaaaaaaa', '2020-01-07', 'Laki-Laki', '1234567890', 'CRrteAedhb9hTzH6Zp2utdRryBScCgONUwYbRQj9MXGrjTqp5jXObO6Z4FKM', '2020-01-09 01:51:59', '2020-01-09 01:51:59'),
+(3, 'User', 'wasdwasd', '$2y$10$y8WHBxhEP2xwqtIMoJFoR.hMHGCL5lJvEXWTXwAbc3UqVD3J896QS', 'wasdwasd', 'alamatwasd', '2001-06-14', 'Laki-Laki', '852101231234', '68YFBSx3GVkYdXu8m2QAb40FqIhJ5vnhMI5FCF5Yhb2cDu50D9oCySvqCfgC', '2020-01-15 07:31:36', '2020-03-02 15:57:06'),
+(4, 'user', 'ibusiti', '$2y$10$MhRlVXoBuhNYrz..USsAcO1KwKdbFBBHtIi1.K9Lg/yYbP85M2cEy', 'ibusiti', 'diah', '1978-12-12', 'Perempuan', '852106620', 'zj50AnYUPploDah15HaRfQ5gIHOvhLX6v9nJFNgB1owyWpj0wcDD2TJV2ZsW', '2020-02-10 03:41:32', '2020-02-10 03:41:32'),
+(5, 'user', 'usernamenya', '$2y$10$r9HlwlkYqcignq1fKgng3.wGXosyFGuAEDEawPCsjkQLi70zWO/4y', 'user name nya', 'user  name nya ada dimana', '2020-12-12', 'Perempuan', '123456789012', 'zwb0VY1d4cKJEaTnOrYvmSinbj8lp1L4wQo7LUU2AbHa9ZUq7oyjnmsSuUPn', '2020-02-10 04:04:06', '2020-02-28 11:50:16'),
+(6, 'user', 'usersatu', '$2y$10$f7ks7rDUDCUW0x9KM8yHQ.0ZtpyPfsOo8CJQDX4O0sOPd/kgfmOb6', 'usersatu dua tiga', 'usersatu dua tiga empat', '2020-12-12', 'Laki-Laki', '085124121213', 'RgXERXf0xqJyG7PJSgeatyfFBAJwLE35Eot9QhfPhNYyp7CzZ09AX3zDHKZl', '2020-02-11 01:01:30', '2020-02-11 01:05:29'),
+(8, 'user', 'papazola', '$2y$10$S5m0b0CRxTXG1XYiSkTqYOwCH6.8PDL4zuiCYHCfXF86VaHb4dQf.', 'papa pipi zola', 'pulau rintis', '2000-02-02', 'Laki-Laki', '085225263753', 'vM0l4iCUGSR4SMBULX1GY0jcA4Fcz1YTmm2G9FfAtwUQqJi7FhSwnZomNI8C', '2020-02-11 04:30:03', '2020-02-11 04:34:34'),
+(9, 'user', 'userdua', '$2y$10$3Edkkc4.oTMjEtTOsYpHpudXmSu2AGE9t89fk85pW2hIR7lcSYeQ.', 'user dua tiga', 'null', '2000-02-02', 'null', 'null', 'NQDFCipq1c3NG401ywEgXXz5g6FowznZ2Z75dqV6U809i15M7QOP85tem1nc', '2020-02-11 06:29:57', '2020-02-11 06:29:57'),
+(10, 'user', 'usertiga', '$2y$10$BYsB9rmSM6eclNSdfKCRveQNIvHhqy6/wR8FYjmcnsrPsIrhcnxei', 'user tiga', 'alamatnya panjang sekali', '2000-02-02', 'Perempuan', '085225263753', 'NKFGvtlmwUmocgwbGJ8jABL7Sv9l8inZLnIvuj8AOcBFcP2JIWSp8HRGLWbr', '2020-02-11 06:31:46', '2020-03-01 15:26:11'),
+(11, 'user', 'userempat', '$2y$10$O1Q0IUnX0RZXH0A8G32l6Og7TRochlkAJKDL.HpJWH6GiB/Dhimhi', 'user empat lima enam tjh', 'Jalan Irigasi, Dusun Sukajadi, RT 33, RW 08, Desa Sukanagara, Kecamatan Padaherang, Kabupaten Pangandaran, Provinsi Jawa Barat, Indonesia, Asia Tenggara, ASIA, Bumi, Bima Sakti, 46384', NULL, 'Laki-Laki', '08885323801', 'jWnmfTZKlDyjrSBX5ilKZlUpiOQeLBs1dLRDJnnpI0ThOcVQhVDJQl6erKv1', '2020-02-12 04:27:29', '2020-02-28 08:27:54'),
+(12, 'user', 'mamazila', '$2y$10$f0TvuL4ia4COilB7WcJl.ePa/3ox2fthGgoDZ5hsjZVw7XOsXKhc2', 'mama zila', 'mama zila ada si game papa zola 5', NULL, 'Perempuan', '12345678901', 'TqY5mohDcZ9LQbnTj0ufZ8I6wYnIMJF8GKiFjLyyV2ybRB9kUJ6ZAauhKPAG', '2020-02-12 12:55:20', '2020-02-12 12:57:16'),
+(13, 'user', 'miawaug', '$2y$10$dsbkFSyHIwvkjIfYONF9sutUUMPDYTgkRbE5UCKhBBh9q6QIl2wbS', 'miawaug', NULL, NULL, NULL, NULL, 'AHHPmTbz7Bv7lcAwXrjNUathCDcKZ6vdpOAGu7ooKkPfpsoT3j8NyQ4T7Ael', '2020-02-28 05:52:42', '2020-02-28 05:52:42'),
+(14, 'user', 'mimimi', '$2y$10$jtkG229VA3FLXSA.5pOfDurlcAHzV8xOaTXqzLgtHFBmA.okJqeJ.', 'mimimimi', 'jalan irigasi dusun sukajadi rt33 rw 08 desa sukanagara kecamatan padaherang kabupaten pangandaran provinsi jawa barat negara indonesia wilayah asia tenggara benua asia planet bumi tata surya galaxi bima sakti', NULL, 'Perempuan', '085210665025', 'D0l0E1b1v0fTBvfy6QqQUiXm5jTne9CslvJbip2VZyMllTOM8KhpO6TIiwJL', '2020-02-29 01:14:19', '2020-02-29 02:05:37'),
+(15, 'user', 'asdasd', '$2y$10$sQgh2DZLTMJqvxBx14COnOFSt0P0atNE98FmaXYUqORSCXwF6tM2S', 'asdasd', NULL, NULL, NULL, NULL, 'GyhmiTROCyEWGdrKfiuTvxX5pUwPzqytM6xugO8iYTmeKMWtlHr8SmhqOoVG', '2020-02-29 04:52:12', '2020-02-29 04:52:12');
 
 -- --------------------------------------------------------
 
@@ -317,8 +367,8 @@ INSERT INTO `penumpangs` (`id_penumpang`, `level`, `username`, `password`, `nama
 CREATE TABLE `profiles` (
   `id_profile` int(10) UNSIGNED NOT NULL,
   `id_penumpang` int(11) NOT NULL,
-  `email` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_ktp` int(20) NOT NULL,
+  `email` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_ktp` bigint(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -328,7 +378,15 @@ CREATE TABLE `profiles` (
 --
 
 INSERT INTO `profiles` (`id_profile`, `id_penumpang`, `email`, `no_ktp`, `created_at`, `updated_at`) VALUES
-(1, 3, 'admin@gmail.com', 12123123, '2020-01-15 15:44:56', '2020-01-15 15:45:13');
+(1, 3, 'admin@gmail.com', 1234567890123456, '2020-01-15 15:44:56', '2020-02-18 07:13:15'),
+(2, 5, 'usernamenya@gmail.com', 11685586, '2020-02-11 00:38:34', '2020-02-11 00:38:36'),
+(3, 6, 'usersatu@ymail.com', 0, '2020-02-11 01:05:29', '2020-02-11 01:05:29'),
+(5, 7, 'null@gmail.com', 987654321098765, '2020-02-11 04:15:20', '2020-02-11 04:18:22'),
+(6, 8, 'papapipi@gmail.com', 1234567890123456, '2020-02-11 04:34:34', '2020-02-11 04:34:34'),
+(7, 10, 'a@gmail.com', 1234567890123456, '2020-02-11 06:59:15', '2020-02-11 06:59:15'),
+(8, 11, 'userempat@gmail.com', 12312312312312312, '2020-02-12 04:41:54', '2020-02-16 14:57:28'),
+(9, 12, 'mamazila@gmai.com', 1231231231231231, '2020-02-12 12:57:16', '2020-02-12 12:57:16'),
+(10, 14, 'mimimi@gmail.com', 3207201406010004, '2020-02-29 02:04:43', '2020-02-29 02:05:37');
 
 -- --------------------------------------------------------
 
@@ -338,7 +396,7 @@ INSERT INTO `profiles` (`id_profile`, `id_penumpang`, `email`, `no_ktp`, `create
 
 CREATE TABLE `rutes` (
   `id_rute` int(10) UNSIGNED NOT NULL,
-  `tujuan` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tujuan` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rute_awal` int(11) NOT NULL,
   `rute_akhir` int(11) NOT NULL,
   `nama_tempat_awal` varchar(151) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -355,11 +413,17 @@ CREATE TABLE `rutes` (
 --
 
 INSERT INTO `rutes` (`id_rute`, `tujuan`, `rute_awal`, `rute_akhir`, `nama_tempat_awal`, `wilayah_awal`, `nama_tempat_akhir`, `wilayah_akhir`, `id_transportasi`, `created_at`, `updated_at`) VALUES
-(37, 'dari Medan ke Bali', 3, 4, 'Kualanamu', 'Medan', 'I Gusti Ngurah Rai', 'Bali', 22, '2020-01-27 12:46:06', '2020-01-27 12:58:07'),
-(38, 'Kalimantan', 9, 7, 'Kalimaru', 'Kalimantan Timur', 'Sepingan', 'Balikpapan', 23, '2020-01-27 12:58:26', '2020-01-27 12:58:26'),
-(39, 'Malioboro', 14, 15, 'Gambir', 'DKI Jakarta', 'Yogyakarta', 'DIY Yogyakarta', 26, '2020-01-27 13:07:30', '2020-01-27 13:07:30'),
-(40, 'Kota Kembang', 18, 16, 'Gubeng', 'Surabaya', 'Bandung Hall', 'Bandung', 27, '2020-01-27 13:07:53', '2020-01-27 13:07:53'),
-(41, 'bnd', 18, 16, 'Gubeng', 'Surabaya', 'Bandung Hall', 'Bandung', 28, '2020-01-27 13:08:15', '2020-01-27 13:08:34');
+(38, 'Kalimantan', 9, 7, 'Kalimaru', 'Kalimantan Timur', 'Sepingan', 'Balikpapan', 25, '2020-01-27 12:58:26', '2020-02-12 12:28:04'),
+(41, 'bnd', 18, 16, 'Gubeng', 'Surabaya', 'Bandung Hall', 'Bandung', 28, '2020-01-27 13:08:15', '2020-01-27 13:08:34'),
+(42, 'undefined', 5, 7, 'Djuanda', 'Jawa Timur', 'Sepingan', 'Balikpapan', 23, '2020-02-07 15:00:01', '2020-02-07 15:00:01'),
+(43, 'undefined', 10, 12, 'Ahmad Yani', 'Semarang', 'Halim Perdanakusuma', 'DKI Jakarta', 27, '2020-02-07 15:02:07', '2020-02-07 15:02:07'),
+(44, 'undefined', 21, 17, 'Medan Kota', 'Medan', 'Kuala Namu', 'Medan', 28, '2020-02-07 15:03:44', '2020-02-07 15:03:44'),
+(45, 'undefined', 10, 4, 'Ahmad Yani', 'Semarang', 'I Gusti Ngurah Rai', 'Bali', 23, '2020-02-08 15:00:08', '2020-02-08 15:00:08'),
+(46, 'undefined', 8, 3, 'Samarinda Baru', 'Samarinda', 'Kualanamu', 'Medan', 24, '2020-02-08 15:02:27', '2020-02-08 15:02:27'),
+(47, NULL, 18, 15, 'Gubeng', 'Surabaya', 'Yogyakarta', 'DIY Yogyakarta', 27, '2020-02-08 15:02:54', '2020-02-08 15:02:54'),
+(48, 'undefined', 13, 4, 'Soekarno-Hatta', 'DKI Jakarta', 'I Gusti Ngurah Rai', 'Bali', 22, '2020-02-12 12:27:52', '2020-02-12 12:27:52'),
+(49, 'undefined', 13, 3, 'Soekarno-Hatta', 'DKI Jakarta', 'Kualanamu', 'Medan', 24, '2020-02-13 00:47:48', '2020-02-13 00:47:48'),
+(50, 'undefined', 21, 14, 'Medan Kota', 'Medan', 'Gambir', 'DKI Jakarta', 27, '2020-02-13 00:52:18', '2020-02-13 00:52:18');
 
 -- --------------------------------------------------------
 
@@ -390,7 +454,6 @@ INSERT INTO `tempats` (`id_tempat`, `nama_tempat`, `kode_tempat`, `wilayah`, `ti
 (8, 'Samarinda Baru', 'AIR14', 'Samarinda', 'Bandara', '2020-01-27 02:39:12', '2020-01-27 02:39:12'),
 (9, 'Kalimaru', 'AIR8', 'Kalimantan Timur', 'Bandara', '2020-01-27 02:39:33', '2020-01-27 02:39:33'),
 (10, 'Ahmad Yani', 'AIR10', 'Semarang', 'Bandara', '2020-01-27 02:39:44', '2020-01-27 02:39:44'),
-(12, 'Halim Perdanakusuma', 'AIR19', 'DKI Jakarta', 'Bandara', '2020-01-27 02:41:40', '2020-01-27 02:41:40'),
 (13, 'Soekarno-Hatta', 'AIR14', 'DKI Jakarta', 'Bandara', '2020-01-27 02:43:42', '2020-01-27 02:43:42'),
 (14, 'Gambir', 'STA6', 'DKI Jakarta', 'Statsiun', '2020-01-27 02:49:47', '2020-01-27 02:49:47'),
 (15, 'Yogyakarta', 'STA10', 'DIY Yogyakarta', 'Statsiun', '2020-01-27 02:50:06', '2020-01-27 02:50:06'),
@@ -412,9 +475,9 @@ CREATE TABLE `tikets` (
   `kode_pemesanan` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `kode_tiket` varchar(10) NOT NULL,
-  `status` enum('Menunggu Pembayaran','Menunggu Konfirmasi User','Menunggu Konfirmasi Admin','Sukses','Dibatalkan') NOT NULL DEFAULT 'Menunggu Pembayaran',
+  `status` enum('Menunggu Pembayaran','Menunggu Konfirmasi User','Menunggu Konfirmasi Admin','Sukses','Batal') NOT NULL DEFAULT 'Menunggu Pembayaran',
   `qty` int(11) NOT NULL DEFAULT '1',
-  `no_kursi` varchar(255) NOT NULL,
+  `no_kursi` bigint(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -424,24 +487,76 @@ CREATE TABLE `tikets` (
 --
 
 INSERT INTO `tikets` (`id_tiket`, `id_jadwal`, `kode_pemesanan`, `username`, `kode_tiket`, `status`, `qty`, `no_kursi`, `created_at`, `updated_at`) VALUES
-(52, 17, 'PEMS00WK5Z3', 'wasdwasd', 'TIK1710', 'Sukses', 1, '10', '2020-02-03 03:50:13', '2020-02-03 03:50:13'),
-(53, 16, 'PEMS00WK5Z3', 'wasdwasd', 'TIK1620', 'Sukses', 1, '20', '2020-02-03 03:50:13', '2020-02-03 03:50:13'),
-(54, 16, 'PEMS003ABHN', 'wasdwasd', 'TIK1610', 'Sukses', 1, '10', '2020-02-04 02:17:04', '2020-02-04 02:17:04'),
-(55, 16, 'PEMS003ABHN', 'wasdwasd', 'TIK1611', 'Sukses', 1, '11', '2020-02-04 02:17:04', '2020-02-04 02:17:04'),
-(56, 17, 'PEMS00EKASN', 'wasdwasd', 'TIK1790', 'Sukses', 1, '90', '2020-01-30 14:17:35', '2020-01-30 14:17:35'),
-(57, 17, 'PEMS00EKASN', 'wasdwasd', 'TIK1719', 'Sukses', 1, '19', '2020-01-30 14:17:35', '2020-01-30 14:17:35'),
-(58, 16, 'PEMS00EKASN', 'wasdwasd', 'TIK1690', 'Sukses', 1, '90', '2020-01-30 14:17:35', '2020-01-30 14:17:35'),
-(59, 16, 'PEMS00EKASN', 'wasdwasd', 'TIK166', 'Sukses', 1, '6', '2020-01-30 14:17:35', '2020-01-30 14:17:35'),
-(60, 17, 'PEMS00SOCFL', 'wasdwasd', 'TIK172', 'Sukses', 1, '2', '2020-01-29 04:54:11', '2020-01-29 04:54:11'),
-(61, 17, 'PEMS00SOCFL', 'wasdwasd', 'TIK1799', 'Sukses', 1, '99', '2020-01-29 04:54:11', '2020-01-29 04:54:11'),
-(62, 17, 'PEMS00A3YKU', 'wasdwasd', 'TIK170', 'Sukses', 1, '0', '2020-01-29 04:53:53', '2020-01-29 04:53:53'),
-(63, 17, 'PEMS00A3YKU', 'wasdwasd', 'TIK17-1', 'Sukses', 1, '-1', '2020-01-29 04:53:53', '2020-01-29 04:53:53'),
-(64, 17, 'PEMS00ZVIO2', 'wasdwasd', 'TIK171', 'Sukses', 1, '1', '2020-02-04 03:46:29', '2020-02-04 03:46:29'),
-(65, 16, 'PEMS00ZVIO2', 'wasdwasd', 'TIK169', 'Sukses', 1, '9', '2020-02-04 03:46:29', '2020-02-04 03:46:29'),
-(66, 17, 'PEMS00RIDG7', 'wasdwasd', 'TIK1760', 'Sukses', 1, '60', '2020-01-12 04:52:46', '2020-01-29 04:52:46'),
-(67, 17, 'PEMS00EOH55', 'wasdwasd', 'TIK1770', 'Sukses', 1, '70', '2020-02-04 09:27:29', '2020-02-04 09:27:29'),
-(68, 17, 'PEMS00EOH55', 'wasdwasd', 'TIK1777', 'Sukses', 1, '77', '2020-02-04 09:27:29', '2020-02-04 09:27:29'),
-(69, 16, NULL, 'wasdwasd', 'TIK1601', 'Menunggu Pembayaran', 1, '01', '2020-02-04 10:02:22', '2020-02-04 10:02:22');
+(70, 22, 'PEMS00CIVT1', 'wasdwasd', 'TIK2210', 'Sukses', 1, 10, '2020-02-08 15:13:07', '2020-02-08 15:13:07'),
+(71, 26, 'PEMS00CIVT1', 'wasdwasd', 'TIK265', 'Sukses', 1, 5, '2020-02-08 15:13:07', '2020-02-08 15:13:07'),
+(72, 22, 'PEMS00WU8G8', 'wasdwasd', 'TIK221', 'Sukses', 1, 1, '2020-02-11 07:02:48', '2020-02-11 07:02:48'),
+(73, 26, 'PEMS00IRL8Y', 'wasdwasd', 'TIK269', 'Sukses', 1, 9, '2020-02-09 03:23:24', '2020-02-09 03:23:24'),
+(74, 22, 'PEMS00OPUCC', 'wasdwasd', 'TIK2267', 'Sukses', 1, 67, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(75, 24, 'PEMS00OPUCC', 'wasdwasd', 'TIK2432', 'Sukses', 1, 32, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(76, 24, 'PEMS00OPUCC', 'wasdwasd', 'TIK2410', 'Sukses', 1, 10, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(77, 24, 'PEMS00OPUCC', 'wasdwasd', 'TIK24123', 'Sukses', 1, 123, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(78, 24, 'PEMS00OPUCC', 'wasdwasd', 'TIK2490', 'Sukses', 1, 90, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(79, 24, 'PEMS00OPUCC', 'wasdwasd', 'TIK247', 'Sukses', 1, 7, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(80, 22, 'PEMS00OPUCC', 'wasdwasd', 'TIK229', 'Sukses', 1, 9, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(81, 24, 'PEMS00OPUCC', 'wasdwasd', 'TIK249', 'Sukses', 1, 9, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(82, 25, 'PEMS00OPUCC', 'wasdwasd', 'TIK259', 'Sukses', 1, 9, '2020-02-14 14:34:34', '2020-02-14 14:34:34'),
+(83, 22, 'PEMS00H5EI9', 'usernamenya', 'TIK228', 'Menunggu Konfirmasi User', 1, 8, '2020-02-11 00:44:16', '2020-02-11 00:44:15'),
+(84, 22, 'PEMS00H5EI9', 'usernamenya', 'TIK226', 'Menunggu Konfirmasi User', 1, 6, '2020-02-11 00:44:16', '2020-02-11 00:44:15'),
+(85, 22, 'PEMS00D2C0A', 'usersatu', 'TIK2290', 'Menunggu Konfirmasi User', 1, 90, '2020-02-11 01:06:03', '2020-02-11 01:06:03'),
+(86, 25, 'PEMS00OPUCC', 'wasdwasd', 'TIK257', 'Sukses', 1, 7, '2020-01-21 14:34:34', '2020-02-14 14:34:34'),
+(87, 24, 'PEMS001TIYH', 'wasdwasd', 'TIK248', 'Batal', 1, 8, '2020-02-12 03:16:14', '2020-02-12 03:16:14'),
+(88, 22, 'PEMS00HIQ7F', 'wasdwasd', 'TIK227', 'Sukses', 1, 7, '2020-02-16 00:15:58', '2020-02-16 00:15:58'),
+(89, 26, 'PEMS00HIQ7F', 'wasdwasd', 'TIK2667', 'Sukses', 1, 67, '2020-02-16 00:15:58', '2020-02-16 00:15:58'),
+(91, 24, NULL, 'papapipi', 'TIK2497', 'Menunggu Pembayaran', 1, 97, '2020-02-11 04:10:42', '2020-02-11 04:10:42'),
+(92, 24, NULL, 'papapipi', 'TIK2477', 'Menunggu Pembayaran', 1, 77, '2020-02-11 04:10:50', '2020-02-11 04:10:50'),
+(93, 24, 'PEMS00CP1I8', 'papazola', 'TIK2488', 'Menunggu Konfirmasi User', 1, 88, '2020-02-11 04:35:59', '2020-02-11 04:35:59'),
+(94, 22, 'PEMS00LQQR0', 'usertiga', 'TIK220', 'Sukses', 1, 0, '2020-02-11 07:03:12', '2020-02-11 07:03:12'),
+(96, 26, 'PEMS00V9O9B', 'usertiga', 'TIK268', 'Batal', 1, 8, '2020-02-12 03:18:09', '2020-02-12 03:18:09'),
+(97, 24, 'PEMS00TTQH5', 'usertiga', 'TIK2480', 'Sukses', 1, 80, '2020-03-01 15:27:14', '2020-03-01 15:27:14'),
+(98, 25, 'PEMS00LRHYP', 'userempat', 'TIK2512', 'Sukses', 1, 12, '2020-01-28 17:00:00', '2020-02-12 04:46:30'),
+(99, 24, 'PEMS00SCKHY', 'mamazila', 'TIK2455', 'Sukses', 1, 55, '2020-02-12 13:00:24', '2020-02-12 13:00:24'),
+(100, 24, 'PEMS00SCKHY', 'mamazila', 'TIK2465', 'Sukses', 1, 65, '2020-02-05 13:00:24', '2020-02-12 13:00:24'),
+(101, 25, 'PEMS00G8R0H', 'mamazila', 'TIK2590', 'Batal', 1, 90, '2020-02-12 13:03:42', '2020-02-12 13:03:42'),
+(102, 25, 'PEMS00DMAP9', 'mamazila', 'TIK2590', 'Sukses', 1, 90, '2020-02-12 13:20:26', '2020-02-12 13:20:26'),
+(103, 27, 'PEMS00FIYZQ', 'wasdwasd', 'TIK2790', 'Sukses', 1, 90, '2020-02-16 00:15:50', '2020-02-16 00:15:50'),
+(104, 27, 'PEMS00FIYZQ', 'wasdwasd', 'TIK2799', 'Sukses', 1, 99, '2020-02-16 00:15:50', '2020-02-16 00:15:50'),
+(105, 30, 'PEMS00FIYZQ', 'wasdwasd', 'TIK3012', 'Sukses', 1, 12, '2020-02-16 00:15:50', '2020-02-16 00:15:50'),
+(106, 30, 'PEMS00FIYZQ', 'wasdwasd', 'TIK3011', 'Sukses', 1, 11, '2020-02-16 00:15:50', '2020-02-16 00:15:50'),
+(107, 30, 'PEMS00FIYZQ', 'wasdwasd', 'TIK3090', 'Sukses', 1, 90, '2020-02-16 00:15:50', '2020-02-16 00:15:50'),
+(108, 30, 'PEMS00FIYZQ', 'wasdwasd', 'TIK300', 'Sukses', 1, 0, '2020-02-16 00:15:50', '2020-02-16 00:15:50'),
+(109, 27, 'PEMS00KYLKX', 'usertiga', 'TIK2712', 'Sukses', 1, 12, '2020-02-16 00:15:41', '2020-02-16 00:15:41'),
+(110, 29, 'PEMS003R3FY', 'wasdwasd', 'TIK2912', 'Sukses', 1, 12, '2020-02-16 00:15:31', '2020-02-16 00:15:31'),
+(111, 28, 'PEMS003R3FY', 'wasdwasd', 'TIK2811', 'Sukses', 1, 11, '2020-02-16 00:15:31', '2020-02-16 00:15:31'),
+(112, 28, 'PEMS00FFZDR', 'userempat', 'TIK2812', 'Batal', 1, 12, '2020-02-16 11:10:08', '2020-02-16 11:10:08'),
+(113, 28, 'PEMS00FFZDR', 'userempat', 'TIK2854', 'Batal', 1, 54, '2020-02-16 11:10:08', '2020-02-16 11:10:08'),
+(114, 28, 'PEMS00FFZDR', 'userempat', 'TIK2855', 'Batal', 1, 55, '2020-02-16 11:10:08', '2020-02-16 11:10:08'),
+(115, 29, 'PEMS00I38SQ', 'userempat', 'TIK2923', 'Batal', 1, 23, '2020-02-16 11:14:05', '2020-02-16 11:14:05'),
+(116, 29, 'PEMS00I38SQ', 'userempat', 'TIK2943', 'Batal', 1, 43, '2020-02-16 11:14:05', '2020-02-16 11:14:05'),
+(117, 29, 'PEMS00T9D9J', 'userempat', 'TIK2943', 'Sukses', 1, 43, '2020-02-22 14:18:05', '2020-02-22 14:18:05'),
+(118, 29, 'PEMS00T9D9J', 'userempat', 'TIK2911', 'Sukses', 1, 11, '2020-02-22 14:18:05', '2020-02-22 14:18:05'),
+(119, 30, 'PEMS002SO8A', 'userempat', 'TIK30123', 'Menunggu Konfirmasi Admin', 1, 123, '2020-02-16 12:28:20', '2020-02-16 12:28:20'),
+(120, 29, 'PEMS002SO8A', 'userempat', 'TIK29312', 'Menunggu Konfirmasi Admin', 1, 312, '2020-02-16 12:28:20', '2020-02-16 12:28:20'),
+(121, 27, 'PEMS0099XEX', 'userempat', 'TIK2745', 'Sukses', 1, 45, '2020-03-01 14:12:09', '2020-03-01 14:12:09'),
+(122, 27, 'PEMS0099XEX', 'userempat', 'TIK2714', 'Sukses', 1, 14, '2020-03-01 14:12:09', '2020-03-01 14:12:09'),
+(123, 27, 'PEMS0099XEX', 'userempat', 'TIK2774', 'Sukses', 1, 74, '2020-03-01 14:12:09', '2020-03-01 14:12:09'),
+(124, 29, 'PEMS0099XEX', 'userempat', 'TIK29150', 'Sukses', 1, 150, '2020-03-01 14:12:09', '2020-03-01 14:12:09'),
+(125, 29, 'PEMS0099XEX', 'userempat', 'TIK2955', 'Sukses', 1, 55, '2020-03-01 14:12:09', '2020-03-01 14:12:09'),
+(126, 28, 'PEMS00KSRWG', 'wasdwasd', 'TIK2812', 'Sukses', 1, 12, '2020-03-01 14:12:02', '2020-03-01 14:12:02'),
+(128, 27, NULL, 'usertiga', 'TIK2710', 'Menunggu Pembayaran', 1, 10, '2020-02-21 13:34:44', '2020-02-21 13:34:44'),
+(129, 27, NULL, 'usertiga', 'TIK2720', 'Menunggu Pembayaran', 1, 20, '2020-02-21 13:40:13', '2020-02-21 13:40:13'),
+(130, 27, 'PEMS002DKNG', 'userempat', 'TIK2797', 'Menunggu Konfirmasi User', 1, 97, '2020-02-21 15:42:02', '2020-02-21 15:42:02'),
+(131, 30, 'PEMS00RKAI2', 'userempat', 'TIK3089', 'Menunggu Konfirmasi User', 1, 89, '2020-02-21 23:57:01', '2020-02-21 23:57:01'),
+(132, 27, NULL, 'userempat', 'TIK271', 'Menunggu Pembayaran', 1, 1, '2020-02-21 23:57:30', '2020-02-21 23:57:30'),
+(133, 30, 'PEMS00TGP3J', 'wasdwasd', 'TIK30124', 'Menunggu Konfirmasi User', 1, 124, '2020-02-22 11:46:43', '2020-02-22 11:46:43'),
+(134, 30, 'PEMS00TGP3J', 'wasdwasd', 'TIK3043', 'Menunggu Konfirmasi User', 1, 43, '2020-02-22 11:46:43', '2020-02-22 11:46:43'),
+(135, 27, 'PEMS00TGP3J', 'wasdwasd', 'TIK2754', 'Menunggu Konfirmasi User', 1, 54, '2020-02-22 11:46:43', '2020-02-22 11:46:43'),
+(136, 29, 'PEMS00TGP3J', 'wasdwasd', 'TIK2954', 'Menunggu Konfirmasi User', 1, 54, '2020-02-22 11:46:43', '2020-02-22 11:46:43'),
+(139, 27, NULL, 'mimimi', 'TIK2743', 'Menunggu Pembayaran', 1, 43, '2020-02-29 01:16:15', '2020-02-29 01:16:15'),
+(140, 28, NULL, 'mimimi', 'TIK281', 'Menunggu Pembayaran', 1, 1, '2020-02-29 02:27:14', '2020-02-29 02:27:14'),
+(141, 29, 'PEMS00TOI92', 'wasdwasd', 'TIK291', 'Sukses', 1, 1, '2020-03-01 14:11:51', '2020-03-01 14:11:51'),
+(142, 29, NULL, 'asdasd', 'TIK2932', 'Menunggu Pembayaran', 1, 32, '2020-02-29 04:53:23', '2020-02-29 04:53:23'),
+(144, 30, 'PEMS00OPFZ3', 'wasdwasd', 'TIK30251', 'Menunggu Konfirmasi User', 1, 251, '2020-03-01 15:21:09', '2020-03-01 15:21:09'),
+(145, 29, 'PEMS00YGT9T', 'wasdwasd', 'TIK29184', 'Sukses', 1, 213, '2020-03-01 15:25:03', '2020-03-01 15:25:03');
 
 -- --------------------------------------------------------
 
@@ -477,7 +592,8 @@ INSERT INTO `transportasis` (`id_transportasi`, `kode`, `jumlah_kursi`, `keteran
 (25, 'AA12', 150, 'Ekonomi', 18, '2020-01-17 13:34:14', '2020-01-17 13:34:14'),
 (26, 'AW123', 300, 'Bisnis', 25, '2020-01-17 13:43:35', '2020-01-17 13:43:35'),
 (27, 'ABA321', 250, 'Ekonomi', 30, '2020-01-17 13:44:11', '2020-01-17 13:44:11'),
-(28, 'AW231', 250, 'Ekonomi', 25, '2020-01-17 13:44:42', '2020-01-17 13:44:42');
+(28, 'AW231', 250, 'Ekonomi', 25, '2020-01-17 13:44:42', '2020-01-17 13:44:42'),
+(31, 'TRANS14', 12, 'Eksekutif', 14, '2020-02-07 14:10:18', '2020-02-07 14:10:18');
 
 -- --------------------------------------------------------
 
@@ -506,8 +622,6 @@ INSERT INTO `type_transportasis` (`id_type_transportasi`, `nama_type`, `keterang
 (19, 'Pesawat', 'Batik Air', '2020-01-17 13:31:32', '2020-01-17 13:31:32'),
 (20, 'Pesawat', 'Wings Air', '2020-01-17 13:31:40', '2020-01-17 13:31:40'),
 (21, 'Pesawat', 'NAM Air', '2020-01-17 13:31:50', '2020-01-17 13:31:50'),
-(22, 'Pesawat', 'Xpress Air', '2020-01-17 13:32:00', '2020-01-17 13:32:00'),
-(23, 'Pesawat', 'Kalstar Aviation', '2020-01-17 13:32:13', '2020-01-17 13:32:13'),
 (24, 'Kereta', 'Argo Parahyangan', '2020-01-17 13:41:47', '2020-01-17 13:41:47'),
 (25, 'Kereta', 'Argo Wilis', '2020-01-17 13:41:59', '2020-01-17 13:41:59'),
 (26, 'Kereta', 'Argo Dwipangga', '2020-01-17 13:42:10', '2020-01-17 13:42:10'),
@@ -525,7 +639,7 @@ INSERT INTO `type_transportasis` (`id_type_transportasi`, `nama_type`, `keterang
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `level` enum('admin','operator') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'operator',
+  `level` enum('operator','admin') COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(151) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -540,21 +654,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `level`, `username`, `first_name`, `password`, `last_name`, `remember_token`, `created_at`, `updated_at`) VALUES
-(9, 'admin', 'anigato', 'khoerul', '$2y$10$rkS.jG9fDf8faoBdRjq/3Ovlf1IqNlB.jjNd3kny3McAppUm7PuJ6', 'anam', 'dcbdKRSbAvFyOA0q8ujxyJPGPN2sBebQzKzctgs5jrhaZuEqGuVBpP19G1rF', '2020-01-05 01:41:52', '2020-02-07 00:26:38'),
-(10, 'admin', 'balalala', 'balalala', '$2y$10$OZkrbq1eXgzzBAAZDh0qP.F6WTQATHe0oMEuRSZXMlMuUusxjo.Tq', 'balalala', 'uXWVWE2ZiTzeWOwTKpsxqBhtbJq84HyalPwwqwA699Wvh0ZxFrKiC99Cv7Tv', '2020-01-10 12:04:42', '2020-02-06 16:02:09'),
-(11, 'operator', 'anamlagi', 'anam', '$2y$10$wx/B4VzBenPVxTPV6jhXA.r8ZWWyr74FEVVQqpsPzNTqkttkhuWoa', 'saja', 'jtU5j5jN3LSkYSoL1LvhHVmRtxAFpVDDd6e6WBySspfTT7IsMdDDZOrVSSiP', '2020-01-20 03:38:01', '2020-01-28 00:30:50'),
-(12, 'operator', 'sanjaya', 'sanjaya', '$2y$10$n2twmGcPFzw96WbhAvODYuIICOmsY42eJF.I.8UVsj09ZyfqMsFJ.', 'aji', 'L5r4J9BBwe1C05LimRfaZvsnAFTOQshe491REvvXLeFvk65PmNR4DuHIhg19', '2020-02-06 06:36:47', '2020-02-06 06:36:47'),
-(13, 'operator', 'wasdwasd', 'wasdwasd', '$2y$10$VTxaA03lNFiqB6Kbzu8PterA7cSnSqXCdtfJC6XO4u9/vA0mrTM7a', 'wasdwasd', 'lTbLoYR3MaimsKqUFuGHqLaaJuS32a5blNCPo8zloZKfk4eZLmlnzYaOS8tf', '2020-02-06 06:56:20', '2020-02-06 15:55:49');
+(9, 'admin', 'anigato', 'khoerul', '$2y$10$rkS.jG9fDf8faoBdRjq/3Ovlf1IqNlB.jjNd3kny3McAppUm7PuJ6', 'anam', 'dZm3ga3h2xj2YGn7ppXEGWfeBC2lPwTX5VHLJK6AIGHZSlVf9bJTdHpWXHkR', '2020-01-05 01:41:52', '2020-03-01 14:11:38'),
+(10, 'admin', 'balalala', 'balalala', '$2y$10$OZkrbq1eXgzzBAAZDh0qP.F6WTQATHe0oMEuRSZXMlMuUusxjo.Tq', 'balalala', '3COlpQIazWg3lFJFwGWDISKfekqcod0uLA5HimT90bLaubLWqt8TrNPE0nFD', '2020-01-10 12:04:42', '2020-02-16 09:57:18'),
+(14, 'operator', 'qweqwe', 'qweqwe', '$2y$10$OWwB54wnN2lyFlKKD3ZIRu2MbNlpYKChR/ktIxfFDI11mDwQRKAmG', 'qweqwe', 'vNSXFT0BARIoff8oHd3a000ruG7goMFX4nsq3OqQdTBiJGWUxLxMuuszGInz', '2020-02-16 15:41:05', '2020-02-16 15:41:05'),
+(28, 'operator', 'sariroti', 'sari roti', '$2y$10$MolrOmCs5mDZdct7gGsxAuqZeV6CZ0gzgmT5wI34heRv6AUz4PSti', 'roti sari roti', '1e00LtY0kgoafMGu3zLabsULa7jpHbz71TF2Uworak3QUQcWexbNtNTjod6l', '2020-02-17 02:00:11', '2020-02-17 02:00:11');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `detail_pemesanans`
---
-ALTER TABLE `detail_pemesanans`
-  ADD PRIMARY KEY (`id_detail`);
 
 --
 -- Indexes for table `diskons`
@@ -621,8 +728,7 @@ ALTER TABLE `pemesanans`
 -- Indexes for table `penumpangs`
 --
 ALTER TABLE `penumpangs`
-  ADD PRIMARY KEY (`id_penumpang`),
-  ADD UNIQUE KEY `penumpangs_telepone_unique` (`telepone`);
+  ADD PRIMARY KEY (`id_penumpang`);
 
 --
 -- Indexes for table `profiles`
@@ -672,12 +778,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `detail_pemesanans`
---
-ALTER TABLE `detail_pemesanans`
-  MODIFY `id_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT for table `diskons`
 --
 ALTER TABLE `diskons`
@@ -687,7 +787,7 @@ ALTER TABLE `diskons`
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `id_driver` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_driver` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `identitass`
@@ -699,13 +799,13 @@ ALTER TABLE `identitass`
 -- AUTO_INCREMENT for table `jadwals`
 --
 ALTER TABLE `jadwals`
-  MODIFY `id_jadwal` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_jadwal` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `konfirmasi_pemesanans`
 --
 ALTER TABLE `konfirmasi_pemesanans`
-  MODIFY `id_konfirmasi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_konfirmasi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `levels`
@@ -729,25 +829,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pemesanans`
 --
 ALTER TABLE `pemesanans`
-  MODIFY `id_pemesanan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_pemesanan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `penumpangs`
 --
 ALTER TABLE `penumpangs`
-  MODIFY `id_penumpang` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penumpang` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id_profile` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_profile` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `rutes`
 --
 ALTER TABLE `rutes`
-  MODIFY `id_rute` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_rute` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tempats`
@@ -759,13 +859,13 @@ ALTER TABLE `tempats`
 -- AUTO_INCREMENT for table `tikets`
 --
 ALTER TABLE `tikets`
-  MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `transportasis`
 --
 ALTER TABLE `transportasis`
-  MODIFY `id_transportasi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_transportasi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `type_transportasis`
@@ -777,7 +877,7 @@ ALTER TABLE `type_transportasis`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

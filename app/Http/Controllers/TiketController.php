@@ -6,7 +6,7 @@ use App\Tiket;
 use App\Penumpang;
 use App\User;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator as Validator;
 use strlen;
 use rand;
 
@@ -30,26 +30,14 @@ class TiketController extends Controller
      */
     public function tiket_create(Request $req)
     {
-        
-
         $data = Penumpang::Where('username',session('username'))
                             ->first();
-
-        // $text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123457890';
-        // $panj = 4;
-        // $txtl = strlen($text)-1;
-        // $kode_tiket = '';
-        // for($i=1; $i<=$panj; $i++){
-        //  $kode_tiket .= $text[rand(0, $txtl)];
-        // }
-
-        
-
 
         if (session('token')==$data->token) {
             $validator = Validator::make($req->all(),
             [
                 'id_jadwal'=>'required',
+                'no_kursi'=>'required',
             ]);
 
             if ($validator->fails()) {
@@ -63,8 +51,14 @@ class TiketController extends Controller
                 ->where('id_jadwal',$req['id_jadwal'])
                 ->where('status','!=','Batal')
                 ->get();
-
-            $kode = 'TIK'.$req['id_jadwal'].$req['no_kursi'];
+            $text = '123457890';
+            $panj = 3;
+            $txtl = strlen($text)-1;
+            $kode_tiket = '';
+            for($i=1; $i<=$panj; $i++){
+                $kode_tiket .= $text[rand(0, $txtl)];
+            }
+            $kode = 'TIK'.$req['id_jadwal'].$kode_tiket;
             
             if ( $tiket == "[]" )  {
                 Tiket::create([

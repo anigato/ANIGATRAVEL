@@ -36,7 +36,7 @@
         <div class="form-group">
           <label for="">Transportasi</label>
           <select style="border-radius:20px" v-model="id_transportasi" class="form-control" searchable="Search here..">
-            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.kode}} | @{{tran.keterangan}} | @{{tran.ket}}</option>
+            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.kode}} - @{{tran.ket}} (@{{tran.keterangan}})</option>
           </select>
         </div>
         <button class="btn btn-primary btn-user btn-block ">
@@ -64,7 +64,7 @@
         <div class="form-group">
           <label for="">Transportasi</label>
           <select style="border-radius:20px" v-model="id_transportasi" class="form-control" searchable="Search here..">
-            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.kode}} | @{{tran.keterangan}} | @{{tran.ket}}</option>
+            <option v-for="tran in trans" :value="tran.id_transportasi">@{{tran.kode}} - @{{tran.ket}} (@{{tran.keterangan}})</option>
           </select>
         </div>
 
@@ -113,7 +113,7 @@
                   <tr v-for="i in ruteAll">
                     <td>@{{i.nama_tempat_awal}} (@{{i.wilayah_awal}})</td>
                     <td>@{{i.nama_tempat_akhir}} (@{{i.wilayah_akhir}})</td>
-                    <td>@{{i.kode}} | @{{i.keterangan}} | @{{i.ket}}</td>
+                    <td>@{{i.kode}} -  @{{i.ket}} (@{{i.keterangan}})</td>
                     <td>
                       <button class="btn btn-primary" type="submit" v-on:click="edit(i.id_rute,i.tujuan,i.rute_awal,i.rute_akhir,i.id_transportasi)">
                         <i class="fas fa-edit"></i>

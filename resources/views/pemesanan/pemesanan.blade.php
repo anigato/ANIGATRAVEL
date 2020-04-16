@@ -1,9 +1,9 @@
 @extends('user.user')
-@section('title','Pemesanan')
+@section('title','Keranjang')
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
-      <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
+      <a class="navbar-brand" href="{{route('cc')}}">ANIGATRAVEL</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -53,7 +53,7 @@
       <div class="container">
         <div class="row slider-text align-items-center">
           <div class="col-md-7 col-sm-12 ftco-animate">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Layar Awal</a></span> <span>Keranjang</span></p>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{{route('cc')}}">Layar Awal</a></span> <span>Keranjang</span></p>
             <h1 class="mb-3">Keranjang</h1>
           </div>
         </div>
@@ -64,6 +64,7 @@
 @endsection
 @section('content1')
   <section style="background-color:#007bff;color:white" class="ftco-section-2" id="app3" v-if="ada">
+    <br>
     <div ><h3 class="font font-weight-bold text-center text-uppercase" style="color:#fff">Keranjang</h3></div>
     <div class="container-fluid d-flex">
       <table class="table table-hover table-condensed">
@@ -81,15 +82,26 @@
           <tr v-for="tik in tikets" :value="tik.id_tiket">
             <td></td>
             <td>
-              <div class="col-sm-10">
-                <h6 class="font-weight-bold">@{{tik.nama_type}} @{{tik.keterangan}}</h6>
-                <h6>@{{ tik.nama_tempat_awal }} (<span class="font-weight-bold">@{{tik.wilayah_awal}}</span>) <i class="fas fa-arrow-right"></i></h6>
-                <h6>@{{ tik.nama_tempat_akhir }} (<span class="font-weight-bold">@{{tik.wilayah_akhir}}</span>)</h6>
-                <p>@{{tik.tanggal_berangkat}} @{{tik.waktu_berangkat}}</p>
+              <div class="row text-center">
+                <div class="col-lg-12">
+                  <h6 class="font-weight-bold">@{{tik.nama_type}} @{{tik.keterangan}}</h6>
+                </div>
+                <div class="col-lg-12">
+                  <hr class="text-white">
+                </div>
+                <div class="col-lg-5">
+                  <h6>@{{ tik.nama_tempat_awal }} (<span class="font-weight-bold">@{{tik.wilayah_awal}}</span>)</h6>
+                    <p>@{{tik.tanggal_berangkat}} @{{tik.waktu_berangkat}}</p>
+                </div>
+                <div class="col-lg-2"><i class="fas fa-arrow-right"></i></h6></div>
+                <div class="col-lg-5">
+                  <h6>@{{ tik.nama_tempat_akhir }} (<span class="font-weight-bold">@{{tik.wilayah_akhir}}</span>)</h6>
+                  <p>@{{tik.tanggal_sampai}} @{{tik.waktu_sampai}}</p>
+                </div>
               </div>
             </td>
-            <td class="text-center ">@{{tik.harga}}</td>
-            <td class="text-center ">@{{tik.no_kursi}}</td>
+            <td class="text-center">Rp. @{{tik.harga}},-</td>
+            <td class="text-center">@{{tik.no_kursi}}</td>
             <td class="text-center actions">
               <button style="border-radius:8px" class="btn btn-danger btn-sm" type="submit" v-on:click="del(tik.id_tiket)">
                 <i class="fas fa-trash"></i>
@@ -102,7 +114,7 @@
           <tr v-for="i in totals" :value="i.id_tiket">
             <td></td>
             <td></td>
-            <td class="text-center"><strong>Total : <span class="text-center font-weight-bold text-danger text-uppercase mb-1">Rp. @{{i.total}},-</span></strong></td>
+            <td class="text-center"><strong>Total : <span class="text-center font-weight-bold text-white text-uppercase mb-1">Rp. @{{i.total}},-</span></strong></td>
             <td class="col-span-2">
               <button v-on:click="checkout(i.id_tiket)" style="border-radius:8px;width:180%" class="btn btn-success">Lanjutkan <i class="fas fa-angle-right"></i></button>
             </td>
@@ -113,6 +125,7 @@
       </table>
     </div>
   </section>
+  @include('user.about')
 @endsection
 
 @push('js')
@@ -192,9 +205,9 @@
                   })
                   .then((ok) => {
                     if (ok) {
-                      window.location.replace("{{route('flight')}}");
+                      window.location.replace("{{route('cc')}}");
                     } else {
-                      window.location.replace("{{route('dashboard_user')}}");
+                      window.location.replace("{{route('cc')}}");
                     }
                   });
                 }

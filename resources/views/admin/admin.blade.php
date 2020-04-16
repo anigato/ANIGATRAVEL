@@ -76,7 +76,7 @@
       <div id="content">
 
         <!-- Topbar -->
-       @include('admin/header')
+        @include('admin/header')
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -138,7 +138,8 @@
                             icon: "success",
                             button: false,
                           });
-                          window.location.replace("{{route('admin_login')}}");
+                          window.location.replace("{{route('user_login')}}");
+                          // window.location.replace("{{route('admin_login')}}");
                         }
                       }
                     }

@@ -3,7 +3,7 @@
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
-      <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
+      <a class="navbar-brand" href="{{route('cc')}}">ANIGATRAVEL</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
       </button>
@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row slider-text align-items-center">
         <div class="col-md-7 col-sm-12 ftco-animate">
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Layar Awal</a></span> <span>Tentang</span></p>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{{route('cc')}}">Layar Awal</a></span> <span>Tentang</span></p>
           <h1 class="mb-3">Tentang Pembuat</h1>
         </div>
       </div>

@@ -1,9 +1,9 @@
 @extends('user.user')
-@section('title','Pemesanan')
+@section('title','Manual')
 @section('header')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
-      <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
+      <a class="navbar-brand" href="{{route('cc')}}">ANIGATRAVEL</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -163,16 +163,16 @@
               </li>
               <li>
                 <p>Jika ingin memesan tiket pesawat tinggal isi form pencarian jadwal penerbangan</p>
-                <img src="{{asset('panduan/pems-p.png')}}" alt="" width="70%" style="border-radius:20px;">
+                <img src="{{asset('panduan/pems-p.png')}}" alt="" width="100%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Jika ingin memesan tiket kereta, klik dulu tab kereta lalu isi form pencarian jadwal pemberangkatan</p>
-                <img src="{{asset('panduan/pems-t.png')}}" alt="" width="70%" style="border-radius:20px;">
-                <img src="{{asset('panduan/pems-t-f.png')}}" alt="" width="70%" style="border-radius:20px;">
+                <img src="{{asset('panduan/pems-t.png')}}" alt="" width="100%" style="border-radius:20px;">
+                <img src="{{asset('panduan/pems-t-f.png')}}" alt="" width="100%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Setelah form diisi, silahkan klik cari untuk memulai pencarian</p>
-                <img src="{{asset('panduan/pems-t-c.png')}}" alt="" width="70%" style="border-radius:20px;">
+                <img src="{{asset('panduan/pems-t-c.png')}}" alt="" width="100%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Akan muncul alert "Ada" jika jadwal ditemukan dan alert "Maaf" jika jadwal tidak ditemukan</p>
@@ -184,11 +184,11 @@
               </li>
               <li>
                 <p>Jika jadwal telah ditemukan, Pilih jadwal sesuai dengan keinginan</p>
-                <img src="{{asset('panduan/pems-pilih.png')}}" alt="" width="70%" style="border-radius:20px;">
+                <img src="{{asset('panduan/pems-pilih.png')}}" alt="" width="100%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Masukan no tiket / no tempat duduk lalu klik pesan</p>
-                <img src="{{asset('panduan/pems-kursi.png')}}" alt="" width="70%" style="border-radius:20px;">
+                <img src="{{asset('panduan/pems-kursi.png')}}" alt="" width="100%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Setelah klik tombol pesan akan muncul alert "Opps" berarti anda harus login terlebih dahulu</p>
@@ -285,7 +285,7 @@
               </li>
               <li>
                 <p>Anda akan melihat bukti pembayaran yang telah anda upload sebelumnya. silahkan cek, jika benar tinggal tunggu admin menerima pesanan anda. Jika ada yang salah silahkan klik tombol "Kembali" untuk kembali ke Halaman detail pemesaanan.</p>
-                <img src="{{asset('panduan/riw-proses-foto.png')}}" alt="" width="100%" style="border-radius:20px;">
+                <img src="{{asset('panduan/riw-proses-foto.png')}}" alt="" width="70%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Silahkan pilih foto kembali dengan "Choose File" lalu upload untuk mengupload ulang bukti pembayaran</p>
@@ -319,7 +319,7 @@
               </li>
               <li>
                 <p>Ini tampilan ketika anda melihat foto bukti pembayaran</p>
-                <img src="{{asset('panduan/riw-sukses-foto.png')}}" alt="" width="100%" style="border-radius:20px;">
+                <img src="{{asset('panduan/riw-sukses-foto.png')}}" alt="" width="70%" style="border-radius:20px;">
               </li>
               <li>
                 <p>Ini tampilan ketika anda mengklik "Print", anda dapat langsung print invoicenya ke pdf atau yang lainnya dengan klik tombol "Print" dan "Cancel" jika tidak jadi di print</p>

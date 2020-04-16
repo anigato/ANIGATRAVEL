@@ -57,7 +57,7 @@
               <div class="form-control">@{{i.total}}</div>
             </div>
             <div class="col-sm-6">
-              <h6>Ke No Rekening</h6>
+              <h6>Ke No Rekening Atas Nama "Khoerul Anam"</h6>
               <div class="form-control">6782-01-01-98-72-53-9</div>
             </div>
           </div>

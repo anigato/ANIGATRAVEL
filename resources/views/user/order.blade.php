@@ -1,8 +1,9 @@
 @extends('user.user')
+@section('title','Pesan Tiket')
 @section('header')
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">ANIGATRAVEL</a>
+            <a class="navbar-brand" href="{{route('cc')}}">ANIGATRAVEL</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="oi oi-menu"></span> Menu
             </button>
@@ -157,7 +158,7 @@
                                             <select id="rute_akhir" v-model="rute_akhir" class="form-control">
                                                 <option style="background-color:#007bff" v-for="rute in rute_t" :value="rute.id_tempat">@{{ rute.wilayah }} (@{{rute.nama_tempat}})</option>
                                             </select>
-                                            <span class="icon text-white"><i class="fas fa-plane-arrival"></i></span>
+                                            <span class="icon text-white"><i class="fas fa-subway"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -192,7 +193,7 @@
                                 <td class="font-weight-bold" style="width:20%">@{{i.waktu_berangkat}}</td>
                                 <td  style="width:20%"><i class="fas fa-plane"></i></td>
                                 <td class="font-weight-bold" style="width:20%">@{{i.waktu_sampai}}</td>
-                                <td class="font-weight-bold text-warning mb-1" style="width:20%">Rp. @{{i.harga}},-</td></td>
+                                <td class="font-weight-bold text-primary mb-1" style="width:20%">Rp. @{{i.harga}},-</td></td>
                             </tr>
                             <tr class="text-center">
                                 <td style="width:20%">@{{i.ket}} <span class="font-weight-bold">@{{i.kode}}</span></td>
@@ -240,19 +241,12 @@
                 </tbody>
                 <tfoot :value="i.id_tiket">
                   <tr>
-                    <td style="width: 20%">Harga : <span class="font-weight-bold text-warning mb-1">Rp. @{{i.harga}},-</span></td>
-                    <td style="width:10%">
-                      <i class="fas fa-arrow-right"></i>
-                    </td>
+                    <td style="width: 20%">Harga : <span class="font-weight-bold text-white mb-1">Rp. @{{i.harga}},-</span></td>
+                    <td style="width:10%"></td>
                     <td style="width: 20%">
                       <label for="no_kursi">No Kursi</label> <br>
-                      <input required type="number" class="form-control" style="border-radius:20px;" v-model="no_kursi" min="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
+                      <p>@{{i.jumlah_kursi}}</p>
+                      <input required type="number" class="form-control" style="border-radius:20px;" v-model="no_kursi" min="1" max="200"><br>
                       <button style="border-radius:20px;border-color:white" class="btn btn-primary btn-block" type="submit" v-on:click="form_detail_p(i.id_jadwal,no_kursi)" >
                         Pesan <i class="fas fa-check"></i>
                       </button>
@@ -310,7 +304,7 @@
                     if (this.status == 432) {
                       swal({
                         title: "Opps!",
-                        text: "Tiket sudah dipesan!",
+                        text: "Maaf Tiket Pesawat Yang Anda Pilih Sudah Dipesan!",
                         icon: "warning",
                         button: "OK",
                       });
@@ -318,17 +312,28 @@
                     if (this.status == 404) {
                       swal({
                         title: "Opps!",
-                        text: "Mohon Login Dulu!",
+                        text: "Maaf Anda Harus Login Dulu",
                         icon: "warning",
-                        button: "OK",
+                        buttons: true,
+                        dangerMode: true,
+                      })
+                      .then((logot) => {
+                        if (logot) {
+                          window.location.replace("{{route('user_login')}}");
+                        } else {
+                            swal({
+                            title: "Baik!",
+                            text: "Silahkan Lihat-Lihat Dulu",
+                            });
+                        }
                       });
                     }
 
                     if (this.status == 200) {
                       
                       swal({
-                        title: "Berhasil dimasukan ke keranjang",
-                        text: "Mau pesan lagi?",
+                        title: "Berhasil!",
+                        text: "Tiket Berhasil Dimasukan Ke Keranjang. Mau Pesan Lagi?",
                         icon: "success",
                         buttons: true,
                         dangerMode: true,
@@ -364,7 +369,7 @@
                     if (this.status == 422) {
                       swal({
                         title: "Maaf!",
-                        text: "Jadwal Penerbangan tidak ada!",
+                        text: "Jadwal Penerbangan Tidak Ditemukan!",
                         icon: "error",
                         button: "OK",
                       });
@@ -374,8 +379,8 @@
                       app.jadwal_p = JSON.parse(this.responseText);
                       app.jadwal();
                       swal({
-                        title: "Ada!",
-                        text: "Jadwal Penerbangan siap ditampilkan!",
+                        title: "Yeay!",
+                        text: "Jadwal Penerbangan Ditemukan!",
                         icon: "success",
                         button: "OK",
                       });
@@ -456,7 +461,7 @@
                     if (this.status == 432) {
                       swal({
                         title: "Opps!",
-                        text: "Tiket sudah dipesan!",
+                        text: "Tiket Kereta Yang Anda Pilih Sudah Dipesan!",
                         icon: "warning",
                         button: "OK",
                       });
@@ -465,8 +470,8 @@
                     if (this.status == 200) {
                       
                       swal({
-                        title: "Berhasil dimasukan ke keranjang",
-                        text: "Mau pesan lagi?",
+                        title: "Berhasil!",
+                        text: "Tiket Berhasil Dimasukan Ke Keranjang. Mau Pesan Lagi?",
                         icon: "success",
                         buttons: true,
                         dangerMode: true,
@@ -502,7 +507,7 @@
                     if (this.status == 422) {
                       swal({
                         title: "Maaf!",
-                        text: "Jadwal Pemberangkatan tidak ada!",
+                        text: "Jadwal Pemberangkatan Tidak Ditemukan!",
                         icon: "error",
                         button: "OK",
                       });
@@ -512,8 +517,8 @@
                       app.jadwal_p = JSON.parse(this.responseText);
                       app.jadwal();
                       swal({
-                        title: "Ada!",
-                        text: "Jadwal Pemberangkatan siap ditampilkan!",
+                        title: "Yeay!",
+                        text: "Jadwal Pemberangkatan Ditemukan!",
                         icon: "success",
                         button: "OK",
                       });

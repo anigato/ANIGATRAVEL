@@ -1,7 +1,8 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <title>ANIGATRAVEL</title>
+        <title> ANIGATRAVEL - @yield('title') </title> 
+        <link rel="icon" href="/storage/images/anigato.png">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
@@ -37,6 +38,8 @@
             <div class="container-fluid d-flex">
             </div>
         </section>
+
+        
 
         {{-- @include('user.content3')
 
@@ -117,40 +120,40 @@
             },
             logout_user : function(){
                 swal({
-                title: "Yakin mau logout sekarang?",
-                text: "Nanti harus login lagi loh!",
-                icon: "info",
-                buttons: true,
-                dangerMode: true,
+                    title: "Yakin mau logout sekarang?",
+                    text: "Nanti harus login lagi loh!",
+                    icon: "info",
+                    buttons: true,
+                    dangerMode: true,
                 })
                 .then((logot) => {
-                if (logot) {
-                    var url = "{{route('user_logot')}}";
-                    var data='?token='+token;
+                    if (logot) {
+                        var url = "{{route('user_logot')}}";
+                        var data='?token='+token;
 
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4) {
-                            console.log(this.status,this.responseText)
-                            if (this.status == 200) {
-                            swal({
-                                title: "Berhasil",
-                                text: "Anda berhasil logout!",
-                                icon: "success",
-                                button: false,
-                            });
-                            window.location.replace("{{route('user_login')}}");
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4) {
+                                console.log(this.status,this.responseText)
+                                if (this.status == 200) {
+                                swal({
+                                    title: "Berhasil",
+                                    text: "Anda berhasil logout!",
+                                    icon: "success",
+                                    button: false,
+                                });
+                                window.location.replace("{{route('user_login')}}");
+                                }
                             }
-                        }
-                        }
-                    xhttp.open("GET", url+data, true);
-                    xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
-                    xhttp.send();
-                } else {
-                    swal({
-                    title: "Mantap!",
-                    text: "Tidak jadi logout sekarang",
-                    });
-                }
+                            }
+                        xhttp.open("GET", url+data, true);
+                        xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
+                        xhttp.send();
+                    } else {
+                        swal({
+                        title: "Mantap!",
+                        text: "Tidak jadi logout sekarang",
+                        });
+                    }
                 });
             }
             }
