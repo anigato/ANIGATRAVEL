@@ -1,0 +1,4 @@
+Sebelum Menjalankan Aplikasi Harap Lakukan :
+1. Buka Folder "publlic"
+2. Hapus Folder "storage"
+3. Buka CMD, ketik perintah "php artisan storage:link"

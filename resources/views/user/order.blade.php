@@ -130,7 +130,7 @@
                                         <div class="select-wrap">
                                             <div class="check-in" id="start-date">
                                                 <input type="date" v-model="tanggal_berangkat" class="form-control" placeholder="Start date">
-                                                <span class="icon text-white"><i class="fas fa-calendar-alt"></i></span>
+                                                {{-- <span class="icon text-white"><i class="fas fa-calendar-alt"></i></span> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -166,7 +166,7 @@
                                         <div class="select-wrap">
                                             <div class="check-in" id="start-date">
                                                 <input type="date" v-model="tanggal_berangkat" class="form-control" placeholder="Start date">
-                                                <span class="icon text-white"><i class="fas fa-calendar-alt"></i></span>
+                                                {{-- <span class="icon text-white"><i class="fas fa-calendar-alt"></i></span> --}}
                                             </div>
                                         </div>
                                     </div>

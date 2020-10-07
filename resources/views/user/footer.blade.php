@@ -22,9 +22,10 @@
             <div class="col-md">
                 <div class="ftco-footer-widget mb-5">
                 <ul class="ftco-footer-social list-unstyled float-md-right float-lft">
-                    <li class="ftco-animate"><a href="www.youtube.com/c/ANIGATO"><span class="icon-youtube"></span></a></li>
-                    <li class="ftco-animate"><a href="www.facebook.com/khoerulanam"><span class="icon-facebook"></span></a></li>
-                    <li class="ftco-animate"><a href="www.instagram.com/khoerulanam14"><span class="icon-instagram"></span></a></li>
+                    <li class="ftco-animate"><a target="blank" href="https://www.youtube.com/c/ANIGATO"><span class="icon-youtube"></span></a></li>
+                    <li class="ftco-animate"><a target="blank" href="https://www.facebook.com/khoerul.anam.7758235/"><span class="icon-facebook"></span></a></li>
+                    <li class="ftco-animate"><a target="blank" href="https://www.instagram.com/khoerulanam14"><span class="icon-instagram"></span></a></li>
+                    <li class="ftco-animate"><a target="blank" href="https://shopee.co.id/anigastore"><span class="icon-shopping-bag"></span></a></li>
                 </ul>
                 </div>
             </div>
